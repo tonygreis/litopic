@@ -8,7 +8,7 @@
                 © 2022 Laraveller.com
             </p>
             <span class="inline-flex space-x-2 sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-      <a href="https://studio.youtube.com/channel/UCfBCNl3xbAC2wbbjA_9vaYg"
+      <a href="https://youtube.com/channel/UCfBCNl3xbAC2wbbjA_9vaYg"
          class="px-4 py-2 rounded-large text-slate-100 hover:text-slate-300 dark:hover:text-slate-200 dark:text-slate-600 bg-slate-500 dark:bg-slate-400 hover:bg-slate-700 dark:hover:bg-slate-700 flex"
          rel="noopener noreferrer"
          target="_blank">
