@@ -140,7 +140,7 @@ export default {
         const selectedIndex = ref(0);
 
         const search = debounce(async (term) => {
-            let {data} = await axios.get("http://laraveller.test/api/search", {params: {term: term}});
+            let {data} = await axios.get("https://laraveller.com/api/search", {params: {term: term}});
             results.value = data;
             await nextTick();
             resultsRefs.value = [];
