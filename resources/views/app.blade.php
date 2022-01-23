@@ -5,11 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        <title inertia>{{ config('app.name', 'Laraveller') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-16x16.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
+        <link rel="manifest" href="{{asset('mix-manifest.json')}}">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <!-- Global site tag (gtag.js) - Google Analytics -->
