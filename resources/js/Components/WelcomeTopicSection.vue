@@ -8,7 +8,7 @@
                 <Link :href="item.url"
                    class="w-32 h-32 rounded-full border-4 border-slate-800 dark:border-white overflow-hidden shrink-0">
                     <img
-                        :src="item.image" :alt="item.name"
+                        v-lazy="item.image" :alt="item.name"
                         class="object-cover h-full w-full group-hover:opacity-75">
                 </Link>
                 <div>

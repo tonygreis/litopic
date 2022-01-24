@@ -82,7 +82,7 @@
                                 @mousemove="selectedIndex = index"
                                 class="flex items-center px-4 py-2.5 relative rounded-large"
                             >
-                                <img :src="item.image" :alt="item.name"
+                                <img v-lazy="item.image" :alt="item.name"
                                      class="w-16 h-16 rounded-full object-cover border-white border-2 shrink-0 bg-gray-200"
                                 >
                                 <Link :href="item.url">
@@ -140,7 +140,7 @@ export default {
         const selectedIndex = ref(0);
 
         const search = debounce(async (term) => {
-            let {data} = await axios.get("https://laraveller.com/api/search", {params: {term: term}});
+            let {data} = await axios.get('/api/search', {params: {term: term}});
             results.value = data;
             await nextTick();
             resultsRefs.value = [];

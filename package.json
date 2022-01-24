@@ -29,6 +29,7 @@
         "@headlessui/vue": "^1.4.3",
         "@heroicons/vue": "^1.0.5",
         "@tailwindcss/aspect-ratio": "^0.4.0",
-        "vue-multiselect": "^3.0.0-alpha.2"
+        "vue-multiselect": "^3.0.0-alpha.2",
+        "vue3-lazy": "^1.0.0-alpha.1"
     }
 }

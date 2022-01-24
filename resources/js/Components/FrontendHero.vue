@@ -28,16 +28,14 @@
                 </div>
             </div>
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img class="object-cover object-center rounded" alt="hero" src="@/img/hero.svg">
+                <img class="object-cover object-center rounded" alt="hero" v-lazy="hero">
             </div>
         </div>
     </section>
 </template>
 
-<script>
-export default {
-    name: "FrontendHero"
-}
+<script setup>
+ const hero = 'img/hero.svg';
 </script>
 
 <style scoped>
