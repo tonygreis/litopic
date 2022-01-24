@@ -31,6 +31,7 @@ class Lesson extends Model
     public function toSearchableArray()
     {
         $array = [
+            'id' => $this->id,
             'name' => $this->title,
         ];
 
