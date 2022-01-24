@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 
 class Lesson extends Model
 {
     use HasFactory;
+    use Searchable;
+    public $asYouType = true;
 
     protected $fillable = [
         'serie_id',
@@ -24,6 +27,15 @@ class Lesson extends Model
     ];
 
     protected $dates = ['published_at'];
+
+    public function toSearchableArray()
+    {
+        $array = [
+            'name' => $this->title,
+        ];
+
+        return $array;
+    }
 
     public function setTitleAttribute($value)
     {

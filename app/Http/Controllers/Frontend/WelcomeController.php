@@ -42,12 +42,14 @@ class WelcomeController extends Controller
 
     public function search(\Illuminate\Http\Request $request)
     {
-        $lessons = Lesson::where('title', 'like', "%{$request->term}%")->with('serie')->limit(8)->get()->map(fn ($lesson) => [
+        $lessons = Lesson::search($request->term)->query(function ($builder) {
+            $builder->with('serie');
+        })->get()->map(fn($lesson) => [
             'url' => route('frontend.lessons.show', [$lesson->serie->slug, $lesson->slug]),
             'name' => $lesson->title,
             'image' => $lesson->thumbnail_url,
             'serie' => $lesson->serie
         ]);
-       return $lessons;
+        return $lessons;
     }
 }
