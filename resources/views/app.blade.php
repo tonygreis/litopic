@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title inertia>{{ config('app.name', 'Laraveller') }}</title>
-
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-16x16.png') }}">
@@ -28,6 +26,7 @@
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
+        @inertiaHead
     </head>
     <body class="font-sans antialiased">
         <div id="my-app">

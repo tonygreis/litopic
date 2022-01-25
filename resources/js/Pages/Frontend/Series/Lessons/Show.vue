@@ -29,9 +29,10 @@
                         <h3 class="font-semibold tracking-wide text-indigo-400">{{ lesson.title }}</h3>
                     </div>
                     <div class="flex xl:relative flex-col flex-1">
-                        <ul class="flex xl:overflow-y-scroll xl:absolute flex-col w-full h-full">
+                        <ul class="flex xl:overflow-y-scroll xl:absolute flex-col w-full h-full" scroll-region>
                             <li class="" v-for="(les, index) in lessons" :key="les.id">
                                 <Link :href="route('frontend.lessons.show', [serie.slug, les.slug])"
+                                      replace preserve-scroll
                                       :class="{'bg-slate-300 dark:bg-slate-800': les.id === lesson.id, 'bg-slate-100 dark:bg-slate-900': les.id !== lesson.id}"
                                 class="font-medium px-4 py-3 flex space-x-4 items-center text-slate-600 dark:text-slate-300  hover:bg-slate-300 dark:hover:bg-slate-800">
                                     <span class="shrink-0 rounded-full inline-flex ring-2 text-slate-700 dark:text-slate-100 ring-black dark:ring-white font-semibold justify-center items-center self-start w-7 h-7 text-sm font-normal leading-relaxed text-center bg-indigo-300 dark:bg-indigo-600">
