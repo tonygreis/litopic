@@ -1,7 +1,7 @@
 <template>
     <Head title="Welcome" />
     <FrontendLayout>
-       <div class="bg-gray-800">
+       <div class="bg-gradient-to-r from-sky-500 to-indigo-500 dark:from-sky-900 dark:to-indigo-900">
            <div class="max-w-7xl mx-auto">
                <FrontendHero />
            </div>

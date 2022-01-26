@@ -1,5 +1,5 @@
 <template>
-    <Head title="Tags Index" />
+    <Head title="Lesson Index" />
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">

@@ -28,7 +28,7 @@ class SerieController extends Controller
     {
         return Inertia::render('Frontend/Series/Show', [
             'serie' => $serie,
-            'lessons' => $serie->lessons()->paginate(12)
+            'lessons' => $serie->lessons()->latest()->paginate(12)
                 ->withQueryString()->through(fn($lesson) => [
                     'name' => $lesson->title,
                     'url'  => route('frontend.lessons.show', [$serie->slug,$lesson->slug]),

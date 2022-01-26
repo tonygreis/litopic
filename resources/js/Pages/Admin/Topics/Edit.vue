@@ -1,5 +1,5 @@
 <template>
-    <Head title="Tags Edit" />
+    <Head title="Topics Edit" />
     <AdminLayout>
         <template #header>
                 Edit Topic

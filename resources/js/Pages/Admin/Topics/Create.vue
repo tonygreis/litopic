@@ -1,5 +1,5 @@
 <template>
-    <Head title="Tags Create" />
+    <Head title="Topics Create" />
     <AdminLayout>
         <template #header>
                 Topic Create

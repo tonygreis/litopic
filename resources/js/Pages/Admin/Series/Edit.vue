@@ -1,5 +1,5 @@
 <template>
-    <Head title="Tags Edit" />
+    <Head title="Series Edit" />
     <AdminLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">

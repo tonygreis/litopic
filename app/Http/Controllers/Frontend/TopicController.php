@@ -28,7 +28,7 @@ class TopicController extends Controller
     {
         return Inertia::render('Frontend/Topics/Show', [
             'topic' => $topic,
-            'series' => $topic->series()->paginate(12)
+            'series' => $topic->series()->latest()->paginate(12)
                 ->withQueryString()->through(fn($serie) => [
                 'name' => $serie->name,
                 'url'  => route('frontend.series.show', $serie->slug),

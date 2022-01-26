@@ -16,7 +16,7 @@ class SerieController extends Controller
     {
         $perPage = Request::input('perPage') ?: 5;
         return Inertia::render('Admin/Series/Index', [
-            'series' => Serie::query()
+            'series' => Serie::query()->latest()
                 ->when(Request::input('search'), function($query, $search) {
                     $query->where('name', 'like', "%{$search}%");
                 })

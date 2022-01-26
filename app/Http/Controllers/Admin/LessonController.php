@@ -18,7 +18,7 @@ class LessonController extends Controller
         $perPage = \Illuminate\Support\Facades\Request::input('perPage') ?: 5;
         return Inertia::render('Admin/Series/Lessons/Index', [
             'serie' => $serie,
-            'lessons' => Lesson::query()
+            'lessons' => Lesson::query()->latest()
                 ->where('serie_id', $serie_id)
                 ->when(Request::input('search'), function($query, $search) {
                     $query->where('title', 'like', "%{$search}%");
