@@ -2,7 +2,7 @@
     <Head :title="lesson.title" />
     <FrontendLayout>
         <div class="py-1">
-            <div class="bg-slate-200 dark:bg-slate-700 w-full py-5 px-3 md:px-8 flex items-center overflow-hidden">
+            <div class="bg-slate-200 dark:bg-slate-700 w-full py-5 px-3 md:px-8 flex flex-wrap lg:flex-nowrap items-center">
                 <div class="relative w-full flex items-center">
                     <Link class="flex items-center md:mr-4" :href="`/series/${serie.slug}`">
                         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" class="w-7 h-7 text-indigo-800 dark:text-white mr-3">
@@ -12,14 +12,12 @@
                                   d="M19.25 12H5"></path>
                         </svg>
                     </Link>
-                    <div class="flex flex-wrap">
-                        <h1 class="md:text-lg text-indigo-800 dark:text-gray-200 truncate text-ellipsis">{{ serie.name }}</h1>
-                        <div class="flex items-center ml-4 mt-2 md:mt-0">
-                            <div
-                                class="text-xs uppercase tracking-wide font-medium">
-                                <span class="p-1 m-1 text-slate-900 dark:text-slate-300 bg-slate-300 dark:bg-slate-800 rounded" v-for="topic in serie.topics">{{ topic.name }}</span>
-                            </div>
-                        </div>
+                    <h1 class="md:text-lg text-indigo-800 dark:text-gray-200 truncate text-ellipsis">{{ serie.name }}</h1>
+                </div>
+                <div class="flex items-center ml-4">
+                    <div
+                        class="text-xs flex uppercase tracking-wide font-medium">
+                        <span class="p-1 m-1 flex text-slate-900 dark:text-slate-300 bg-slate-300 dark:bg-slate-800 rounded" v-for="topic in serie.topics">{{ topic.name }}</span>
                     </div>
                 </div>
             </div>
