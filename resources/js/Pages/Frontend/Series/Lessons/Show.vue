@@ -12,11 +12,13 @@
                                   d="M19.25 12H5"></path>
                         </svg>
                     </Link>
-                    <h1 class="md:text-lg text-indigo-800 dark:text-gray-200 truncate text-ellipsis">{{ serie.name }}</h1>
-                    <div class="flex items-center ml-4">
-                        <div
-                            class="text-xs uppercase tracking-wide font-medium">
-                            <span class="p-1 m-1 text-slate-900 dark:text-slate-300 bg-slate-300 dark:bg-slate-800 rounded" v-for="topic in serie.topics">{{ topic.name }}</span>
+                    <div class="flex flex-wrap">
+                        <h1 class="md:text-lg text-indigo-800 dark:text-gray-200 truncate text-ellipsis">{{ serie.name }}</h1>
+                        <div class="flex items-center ml-4 mt-2 md:mt-0">
+                            <div
+                                class="text-xs uppercase tracking-wide font-medium">
+                                <span class="p-1 m-1 text-slate-900 dark:text-slate-300 bg-slate-300 dark:bg-slate-800 rounded" v-for="topic in serie.topics">{{ topic.name }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
