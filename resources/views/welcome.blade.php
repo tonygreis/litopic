@@ -18,21 +18,15 @@
                 <div class="container px-5 py-4 mx-auto">
                     <div class="flex flex-wrap -m-4 text-center">
                         <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                            <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block"
-                                    viewBox="0 0 24 24">
-                                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                                    <path
-                                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                                </svg>
-                                <h2 class="title-font font-medium text-3xl text-slate-900 dark:text-slate-300">Start
-                                    Learning</h2>
-                                <a href=""
-                                    class="leading-relaxed font-bold text-indigo-500 hover:text-indigo-700">Watch</a>
-                            </div>
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
+                                                        crossorigin="anonymous"></script>
+                            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid"
+                                data-ad-layout-key="-ec+g-v-4z+c4" data-ad-client="ca-pub-8360309152742177"
+                                data-ad-slot="5357855034"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || [])
+                                .push({});
+                            </script>
                         </div>
                         <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
                             <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
