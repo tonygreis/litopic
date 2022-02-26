@@ -40,7 +40,7 @@
                                     <div class="flex items-center">
                                         @if ($previous)
                                             <div class="v-popper v-popper--theme-null" v-if="lesson.previous">
-                                                <a href=""
+                                                <a href="{{ route('frontend.lessons.show', $previous->slug) }}"
                                                     class="p-2 rounded-lg hover:bg-gray-100 text-blue-500 dark:text-blue-700 dark:hover:bg-gray-800 disabled:opacity-25 disabled:hover:bg-transparent">
                                                     <svg fill="none" viewBox="0 0 24 24" class="w-6 h-6">
                                                         <path stroke="currentColor" stroke-linecap="round"
@@ -55,7 +55,7 @@
                                         @endif
                                         @if ($next)
                                             <div class="v-popper v-popper--theme-null" v-if="lesson.next">
-                                                <a href=""
+                                                <a href="{{ route('frontend.lessons.show', $next->slug) }}"
                                                     class="p-2 rounded-lg hover:bg-gray-100 text-blue-500 dark:text-blue-700 dark:hover:bg-gray-800 disabled:opacity-25 disabled:hover:bg-transparent">
                                                     <svg fill="none" viewBox="0 0 24 24" class="w-6 h-6">
                                                         <path stroke="currentColor" stroke-linecap="round"
