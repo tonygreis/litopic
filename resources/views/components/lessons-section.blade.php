@@ -23,7 +23,7 @@
                 </a>
             </div>
         @endforeach
-        <div class="m-2 p-2">
+        <div class="m-2 p-2 flex">
             {{ $lessons->links() }}
         </div>
     </div>

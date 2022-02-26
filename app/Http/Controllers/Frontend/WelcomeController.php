@@ -33,9 +33,9 @@ class WelcomeController extends Controller
         JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
         JsonLd::addImage(asset('images/logo.svg'));
 
-       $topics = Topic::all();
-       $series = Serie::all();
-       $lessons = Lesson::all();
+       $topics = Topic::orderBy('created_at', 'desc')->take(8)->get();
+       $series = Serie::orderBy('created_at', 'desc')->take(8)->get();
+       $lessons = Lesson::orderBy('created_at', 'desc')->take(8)->get();
 
        return view('welcome', compact('topics', 'series', 'lessons'));
     }
