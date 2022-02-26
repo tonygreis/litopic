@@ -24,6 +24,7 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
+        "@alpinejs/focus": "^3.9.0",
         "@headlessui/vue": "^1.4.3",
         "@heroicons/vue": "^1.0.5",
         "@inertiajs/inertia": "^0.11.0",
@@ -32,6 +33,7 @@
         "@inertiajs/server": "^0.1.0",
         "@tailwindcss/aspect-ratio": "^0.4.0",
         "@vue/server-renderer": "^3.2.29",
+        "alpinejs": "^3.9.0",
         "vue-multiselect": "^3.0.0-alpha.2",
         "vue3-lazy": "^1.0.0-alpha.1",
         "webpack-node-externals": "^3.0.0"

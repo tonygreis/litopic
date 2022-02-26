@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
 use Laravel\Scout\Searchable;
 
 class Lesson extends Model
 {
-    use HasFactory;
-    use Searchable;
-    public $asYouType = true;
+    use HasFactory, Searchable;
 
     protected $fillable = [
         'serie_id',
@@ -28,11 +27,19 @@ class Lesson extends Model
 
     protected $dates = ['published_at'];
 
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    #[SearchUsingPrefix(['id'])]
     public function toSearchableArray()
     {
-        $array = $this->toArray();
-
-        return $array;
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+        ];
     }
 
     public function setTitleAttribute($value)

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Lesson;
 use App\Models\Serie;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,44 +16,53 @@ class LessonController extends Controller
 {
     public function index()
     {
+        $lessons = Lesson::orderBy('updated_at', 'desc')->paginate(12);
 
-        return Inertia::render('Frontend/Series/Lessons/Index', [
-            'lessons' => Lesson::query()
-                               ->latest()
-                               ->with('serie')
-                               ->paginate(12)
-                               ->withQueryString()->through(fn($lesson) => [
-                               'name' => $lesson->title,
-                               'url'  => route('frontend.lessons.show', [$lesson->serie->slug, $lesson->slug]),
-                               'image' => $lesson->thumbnail_url,
-                                'serie' => $lesson->serie,
-                                 'duration' => date('H:i:s',$lesson->duration)
-                ]),
-        ]);
+        SEOMeta::setTitle('Lessons | Laravel Tutorials');
+        SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        SEOMeta::setCanonical(url()->current());
+
+        OpenGraph::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        OpenGraph::setTitle('Lessons | Laravel Tutorials');
+        OpenGraph::setUrl(url()->current());
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle('Lessons | Laravel Tutorials');
+        TwitterCard::setSite('@Laravellercom');
+
+        JsonLd::setTitle('Lessons | Laravel Tutorials');
+        JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        JsonLd::addImage(asset('images/logo.svg'));
+
+
+        return view('lessons.index', compact('lessons'));
     }
 
     public function show(Serie $serie, Lesson $lesson)
     {
-        $next = Lesson::where([['id', '>', $lesson->id],['serie_id', $serie->id]])->orderBy('id')->first();
-        $previous = Lesson::where([['id', '<', $lesson->id],['serie_id', $serie->id]])->orderBy('id','desc')->first();
-        return Inertia::render('Frontend/Series/Lessons/Show', [
-            'serie' => Serie::where('id', $serie->id)->with('topics')->first(),
-            'lesson' => [
-                'slug' => $lesson->slug,
-                'id' => $lesson->id,
-                'embed_html' => $lesson->embed_html,
-                'title' => $lesson->title,
-                'duration' => date('H:i:s', $lesson->duration),
-                'next' => $next ? route('frontend.lessons.show', [$serie, $next]) : null,
-                'previous' => $previous ? route('frontend.lessons.show', [$serie, $previous]) : null
-            ],
-            'lessons' => collect($serie->lessons)->map(fn($lesson) => [
-                'slug' => $lesson->slug,
-                'id' => $lesson->id,
-                'embed_html' => $lesson->embed_html,
-                'title' => $lesson->title,
-                'duration' => date('H:i:s', $lesson->duration)
-            ])
-        ]);
+        $next = Lesson::where([['id', '>', $lesson->id], ['serie_id', $serie->id]])->orderBy('id')->first();
+        $previous = Lesson::where([['id', '<', $lesson->id], ['serie_id', $serie->id]])->orderBy('id', 'desc')->first();
+
+        SEOMeta::setTitle($lesson->title);
+        SEOMeta::setDescription($lesson->description);
+        SEOMeta::addMeta('article:published_time', $lesson->published_at->toW3CString(), 'property');
+        SEOMeta::addMeta('article:section', $lesson->serie->name, 'property');
+        SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
+
+        OpenGraph::setDescription($lesson->description);
+        OpenGraph::setTitle($lesson->title);
+        OpenGraph::setUrl(url()->current());
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'en-us');
+
+        OpenGraph::addImage($lesson->thumbnail_url);
+        OpenGraph::addImage($lesson->thumbnail_url, ['height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($lesson->title);
+        JsonLd::setDescription($lesson->description);
+        JsonLd::setType('Article');
+        JsonLd::addImage($lesson->thumbnail_url);
+
+        return view('lessons.show', compact('lesson', 'serie', 'next', 'previous'));
     }
 }
