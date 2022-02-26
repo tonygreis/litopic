@@ -53,6 +53,8 @@
                     2022 Laraveller.com —
                     <a href="https://twitter.com/Laravellercom" class="text-gray-600 ml-1" rel="noopener noreferrer"
                         target="_blank">@Laravellercom</a>
+                    <a href="/policy" class="text-gray-600 ml-1">Policy</a>
+                    <a href="/terms" class="text-gray-600 ml-1">Terms</a>
                 </p>
                 <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                     <a href="https://www.facebook.com/1laravellercom" class="text-gray-500">

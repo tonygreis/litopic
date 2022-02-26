@@ -21,6 +21,9 @@ Route::get('/series/{serie:slug}', [SerieFrontendController::class, 'show'])->na
 Route::get('/lessons', [LessonFrontendController::class, 'index'])->name('frontend.lessons.index');
 Route::get('/series/{serie:slug}/lessons/{lesson:slug}', [LessonFrontendController::class, 'show'])->name('frontend.lessons.show');
 
+Route::view('/policy', 'policy')->name('policy');
+Route::view('/terms', 'terms')->name('terms');
+
 Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return Inertia::render('Admin/Index');

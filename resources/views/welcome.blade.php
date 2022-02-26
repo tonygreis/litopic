@@ -37,7 +37,7 @@
                                         d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
                                 </svg>
                                 <h2 class="title-font font-medium text-3xl text-slate-900 dark:text-slate-300">
-                                    {{ count($topics) }}</h2>
+                                    {{ count(\App\Models\Topic::all()) }}</h2>
                                 <p class="leading-relaxed text-slate-900 dark:text-slate-200">Topics</p>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                         d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                 </svg>
                                 <h2 class="title-font font-medium text-3xl text-slate-900 dark:text-slate-300">
-                                    {{ count($series) }}</h2>
+                                    {{ count(\App\Models\Serie::all()) }}</h2>
                                 <p class="leading-relaxed text-slate-900 dark:text-slate-200">Series</p>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                         d="M9 13h6M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                                 </svg>
                                 <h2 class="title-font font-medium text-3xl text-slate-900 dark:text-slate-300">
-                                    {{ count($series) }}</h2>
+                                    {{ count(\App\Models\Lesson::all()) }}</h2>
                                 <p class="leading-relaxed text-slate-900 dark:text-slate-200">Lessons</p>
                             </div>
                         </div>
