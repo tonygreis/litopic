@@ -65,7 +65,7 @@
                             <ul class="m-2">
                                 @foreach ($searchResults as $lesson)
                                     <li
-                                        class="flex items-center m-2 px-4 py-2.5 relative rounded-large bg-gray-100 dark:bg-slate-800">
+                                        class="flex items-center m-2 px-4 py-2.5 relative rounded-large bg-gray-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-900">
                                         <img src="{{ $lesson->thumbnail_url }}" alt="{{ $lesson->title }}"
                                              class="w-16 h-16 rounded-full object-cover border-white border-2 shrink-0 bg-gray-200">
                                         <a
