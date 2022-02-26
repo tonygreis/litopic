@@ -30,7 +30,7 @@ class Search extends Component
 
     public function updatedSearch()
     {
-        $this->searchResults = Lesson::search($this->search)->get();
+        $this->searchResults = Lesson::search($this->search)->take(8)->get();
     }
 
     public function render()

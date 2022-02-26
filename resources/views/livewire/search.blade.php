@@ -33,7 +33,7 @@
                         </svg>
                     </div>
 
-                    <input wire:model.debounce.500="search" x-ref="input"
+                    <input wire:model.debounce.300="search" x-ref="input"
                            class="w-full py-4 pl-12 border-b border-gray-100 dark:text-slate-300 dark:border-gray-700 dark:bg-slate-700 focus:border-none outline-none placeholder-gray-400 rounded-large"
                            type="text" placeholder="Search...">
 
@@ -45,27 +45,27 @@
                     </div>
                 </form>
                 @if ($search)
-                    <div class="overflow-auto">
                         <div wire:loading class="border border-blue-300 shadow rounded-md p-4 my-2 mx-2">
-                            <div class="animate-pulse flex space-x-4">
-                                <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-                                <div class="flex-1 space-y-6 py-1">
-                                    <div class="h-2 bg-slate-200 rounded"></div>
-                                    <div class="space-y-3">
-                                        <div class="grid grid-cols-3 gap-4">
-                                            <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                                            <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                                        </div>
-                                        <div class="h-2 bg-slate-200 rounded"></div>
+                        <div class="animate-pulse flex space-x-4">
+                            <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                            <div class="flex-1 space-y-6 py-1">
+                                <div class="h-2 bg-slate-200 rounded"></div>
+                                <div class="space-y-3">
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                        <div class="h-2 bg-slate-200 rounded col-span-1"></div>
                                     </div>
+                                    <div class="h-2 bg-slate-200 rounded"></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="overflow-auto">
                         @if (count($searchResults) > 0)
                             <ul class="m-2">
                                 @foreach ($searchResults as $lesson)
                                     <li
-                                        class="flex items-center px-4 py-2.5 relative rounded-large bg-gray-100 dark:bg-slate-800">
+                                        class="flex items-center m-2 px-4 py-2.5 relative rounded-large bg-gray-100 dark:bg-slate-800">
                                         <img src="{{ $lesson->thumbnail_url }}" alt="{{ $lesson->title }}"
                                              class="w-16 h-16 rounded-full object-cover border-white border-2 shrink-0 bg-gray-200">
                                         <a
