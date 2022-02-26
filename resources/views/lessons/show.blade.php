@@ -40,7 +40,7 @@
                                     <div class="flex items-center">
                                         @if ($previous)
                                             <div class="v-popper v-popper--theme-null" v-if="lesson.previous">
-                                                <a href="{{ route('frontend.lessons.show', [$serie->slug,$previous->slug]) }}"
+                                                <a href="{{ route('frontend.lessons.show', [$serie->slug, $previous->slug]) }}"
                                                     class="p-2 rounded-lg hover:bg-gray-100 text-blue-500 dark:text-blue-700 dark:hover:bg-gray-800 disabled:opacity-25 disabled:hover:bg-transparent">
                                                     <svg fill="none" viewBox="0 0 24 24" class="w-6 h-6">
                                                         <path stroke="currentColor" stroke-linecap="round"
@@ -74,6 +74,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="m-2 p-2">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
+                                        crossorigin="anonymous"></script>
+                    <!-- lesson-show-bottom -->
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8360309152742177"
+                        data-ad-slot="1369636425" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
             </div>
             <div class="w-full xl:w-96 bg-slate-100 dark:bg-slate-900 flex-col flex">
                 <div class="p-4">
@@ -91,6 +101,17 @@
                 <div class="flex xl:relative flex-col flex-1" scroll-region>
                     <ul class="flex xl:overflow-y-scroll xl:absolute flex-col w-full h-full px-2">
                         @foreach ($serie->lessons as $serie_lesson)
+                            @if ($loop->first)
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
+                                                                crossorigin="anonymous"></script>
+                                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid"
+                                    data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-8360309152742177"
+                                    data-ad-slot="1561208112"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || [])
+                                    .push({});
+                                </script>
+                            @endif
                             <li class="">
                                 <a class="flex justify-between items-center px-5 py-4 rounded lg:flex-grow mb-1 w-full border border-gray-200 dark:border-none hover:bg-gray-50 dark:hover:bg-slate-700 bg-slate-300 dark:bg-slate-700"
                                     href="{{ route('frontend.lessons.show', [$serie->slug, $serie_lesson->slug]) }}">
