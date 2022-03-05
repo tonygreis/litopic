@@ -1,5 +1,5 @@
 <x-main-layout>
-    <div class="max-w-6xl mx-auto mx-4 p-4 bg-slate-200">
+    <div class="max-w-6xl mx-auto p-4 bg-slate-200">
     <h2><strong>Terms and Conditions</strong></h2>
 
     <p>Welcome to Laraveller!</p>

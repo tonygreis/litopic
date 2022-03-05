@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38cd1d0ad3c742520413b270f6e625c3",
+    "content-hash": "8a03dbd131afd36c7c54e29371fe0ca0",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -6093,6 +6093,62 @@
             "time": "2022-01-17T16:30:44+00:00"
         },
         {
+            "name": "themsaid/wink",
+            "version": "v1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/themsaid/wink.git",
+                "reference": "0f71fc56a10e81057ec5a753e38621bad65c1064"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/themsaid/wink/zipball/0f71fc56a10e81057ec5a753e38621bad65c1064",
+                "reference": "0f71fc56a10e81057ec5a753e38621bad65c1064",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0||^8.0||^9.0",
+                "php": "^7.3||^7.4||^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Wink\\WinkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wink\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "Wink Publishing Framework.",
+            "keywords": [
+                "blog",
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/themsaid/wink/issues",
+                "source": "https://github.com/themsaid/wink/tree/v1.3.2"
+            },
+            "time": "2022-02-25T07:31:21+00:00"
+        },
+        {
             "name": "tightenco/ziggy",
             "version": "v1.4.3",
             "source": {
@@ -9356,5 +9412,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

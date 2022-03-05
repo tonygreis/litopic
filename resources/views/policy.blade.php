@@ -1,5 +1,5 @@
 <x-main-layout>
-    <div class="max-w-6xl mx-auto mx-4 p-4 bg-slate-200">
+    <div class="max-w-6xl mx-auto p-4 bg-slate-200">
     <h1>Privacy Policy for Laraveller</h1>
 
     <p>At Laraveller, accessible from Laraveller.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Laraveller and how we use it.</p>

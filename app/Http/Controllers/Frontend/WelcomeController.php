@@ -12,6 +12,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Wink\WinkPost;
 
 class WelcomeController extends Controller
 {
@@ -36,8 +37,9 @@ class WelcomeController extends Controller
        $topics = Topic::orderBy('created_at', 'desc')->take(8)->get();
        $series = Serie::orderBy('created_at', 'desc')->take(8)->get();
        $lessons = Lesson::orderBy('created_at', 'desc')->take(8)->get();
+       $posts = WinkPost::published()->take(8)->get();
 
-       return view('welcome', compact('topics', 'series', 'lessons'));
+       return view('welcome', compact('topics', 'series', 'lessons', 'posts'));
     }
 
     public function search(\Illuminate\Http\Request $request)

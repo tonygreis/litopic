@@ -56,15 +56,6 @@
             </div>
         </div>
     </div>
+</nav>
 
-    <DisclosurePanel class="sm:hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <FrontResponsiveNavLink :href="route('frontend.topics.index')"
-                :active="route().current('frontend.topics.index')">Topics</FrontResponsiveNavLink>
-            <FrontResponsiveNavLink :href="route('frontend.series.index')"
-                :active="route().current('frontend.series.index')">Series</FrontResponsiveNavLink>
-            <FrontResponsiveNavLink :href="route('frontend.lessons.index')"
-                :active="route().current('frontend.lessons.index')">Lessons</FrontResponsiveNavLink>
-        </div>
-    </DisclosurePanel>
-    </Disclosure>
+

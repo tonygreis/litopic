@@ -54,7 +54,7 @@ class TopicController extends Controller
         OpenGraph::addImage(Storage::url($topic->poster_path));
         OpenGraph::addImage(Storage::url($topic->poster_path), ['height' => 300, 'width' => 300]);
 
-        JsonLd::setTitle($topic->title);
+        JsonLd::setTitle($topic->name);
         JsonLd::setDescription($topic->description);
         JsonLd::setType('Article');
         JsonLd::addImage(Storage::url($topic->poster_path));

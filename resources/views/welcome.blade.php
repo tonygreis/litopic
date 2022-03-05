@@ -12,6 +12,9 @@
                 </div>
             @endif
             <div class="overflow-hidden mb-4">
+                <x-welcome-posts-section header="Posts" :posts="$posts" />
+            </div>
+            <div class="overflow-hidden mb-4">
                 <x-welcome-series-section header="Series" :series="$series" />
             </div>
             <section class="text-gray-600 body-font">
