@@ -12,7 +12,7 @@
             </div>
             @if ($lessons)
                 <div class="overflow-hidden mb-4">
-                    <x-lessons-section :header="$serie->name . ' Lessons'" :lessons="$lessons" />
+                    <x-lessons-section-series-show :header="$serie->name . ' Lessons'" :lessons="$lessons" />
                 </div>
             @endif
         </div>
