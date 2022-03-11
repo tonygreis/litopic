@@ -92,7 +92,6 @@
                         </div>
                     </div>
                 </div>
-                <x-display-ads />
                 <div class="flex xl:relative flex-col flex-1">
                     <ul class="flex xl:overflow-y-scroll xl:absolute flex-col w-full h-full px-2">
                         @foreach ($serie->lessons as $serie_lesson)

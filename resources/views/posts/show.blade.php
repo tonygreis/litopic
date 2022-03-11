@@ -18,13 +18,11 @@
                             {{ $post->publish_date }}
                         </p>
                     </div>
-                    <x-display-ads />
                     <p>
                         {!! $post->content !!}
                     </p>
                 </article>
             @endif
-            <x-grid-ads />
         </div>
     </div>
     <x-slot:scripts>

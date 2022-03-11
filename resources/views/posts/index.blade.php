@@ -17,13 +17,11 @@
                     </div>
                 </div>
             </nav>
-            <x-display-ads />
             @if ($posts)
                 <div class="overflow-hidden my-4">
                     <x-posts-section :posts="$posts" />
                 </div>
             @endif
-            <x-grid-ads />
         </div>
     </div>
 </x-main-layout>
