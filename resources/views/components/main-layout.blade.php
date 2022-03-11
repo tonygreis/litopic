@@ -32,6 +32,7 @@
     @isset($styles)
         {{ $styles }}
     @endisset
+    <script src="{{ asset('js/vue.js') }}" defer></script>
     <script src="{{ asset('js/alpine.js') }}" defer></script>
 </head>
 
@@ -96,7 +97,7 @@
     @isset($scripts)
         {{ $scripts }}
     @endisset
-    <script src="{{ asset('js/vue.js') }}" defer></script>
+
 </body>
 
 </html>
