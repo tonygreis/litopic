@@ -22,8 +22,8 @@
                 </a>
             </div>
         @endforeach
+    </div>
         <div class="m-2 p-2">
             {{ $posts->links() }}
         </div>
-    </div>
 </div>

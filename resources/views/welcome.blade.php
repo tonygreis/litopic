@@ -21,7 +21,7 @@
         <section class="text-gray-600 body-font bg-slate-100 dark:bg-slate-800">
             <div class="max-w-7xl p-4 mx-auto">
                 <div class="flex flex-wrap m-4 text-center">
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="p-4 md:w-1/3 w-full">
                         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                  stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block"
@@ -34,7 +34,7 @@
                             <p class="leading-relaxed text-slate-900 dark:text-slate-200">Topics</p>
                         </div>
                     </div>
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="p-4 md:w-1/3 w-full">
                         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                  stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block"
@@ -47,7 +47,7 @@
                             <p class="leading-relaxed text-slate-900 dark:text-slate-200">Series</p>
                         </div>
                     </div>
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="p-4 md:w-1/3 w-full">
                         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                  stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block"
@@ -63,6 +63,11 @@
                 </div>
             </div>
         </section>
+        <div class="text-gray-600 body-font bg-slate-100 dark:bg-slate-800 mx-4">
+            <div class="max-w-7xl p-4 mx-auto">
+                <x-grid-ads></x-grid-ads>
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto mt-4 sm:px-6 lg:px-8">
             <div class="overflow-hidden mb-4">
                 <x-welcome-lessons-section header="Lessons" :lessons="$lessons" />

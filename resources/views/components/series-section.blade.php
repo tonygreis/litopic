@@ -22,8 +22,8 @@
                 </a>
             </div>
         @endforeach
+    </div>
         <div class="m-2 p-2">
             {{ $series->links() }}
         </div>
-    </div>
 </div>

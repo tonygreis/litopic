@@ -20,8 +20,8 @@
                 </a>
             </div>
         @endforeach
+    </div>
         <div class="m-2 p-2">
             {{ $topics->links() }}
         </div>
-    </div>
 </div>

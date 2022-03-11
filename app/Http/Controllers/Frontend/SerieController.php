@@ -18,7 +18,7 @@ class SerieController extends Controller
         $series = Serie::query()
             ->latest()
             ->withCount('lessons')
-            ->paginate(6);
+            ->paginate(12);
 
         SEOMeta::setTitle('Series | Laravel Tutorials');
         SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');

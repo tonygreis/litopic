@@ -34,8 +34,6 @@
     @endisset
     <script src="{{ asset('js/vue.js') }}" defer></script>
     <script src="{{ asset('js/alpine.js') }}" defer></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
-            crossorigin="anonymous"></script>
 </head>
 
 <body class="font-sans antialiased bg-slate-50 dark:bg-slate-700">
@@ -99,7 +97,5 @@
     @isset($scripts)
         {{ $scripts }}
     @endisset
-
 </body>
-
 </html>
