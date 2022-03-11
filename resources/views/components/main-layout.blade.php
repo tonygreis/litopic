@@ -29,8 +29,6 @@
 
         gtag('config', 'UA-123751041-8');
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
-            crossorigin="anonymous"></script>
     @isset($styles)
         {{ $styles }}
     @endisset
