@@ -7,25 +7,11 @@
     @endif
     <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
         @foreach ($posts as $post)
-            @if ($loop->last)
-                <div>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
-                                        crossorigin="anonymous"></script>
-                    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid"
-                        data-ad-layout-key="-ec+g-v-4z+c4" data-ad-client="ca-pub-8360309152742177"
-                        data-ad-slot="5357855034"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || [])
-                        .push({});
-                    </script>
-                </div>
-            @endif
             <div>
                 <a href="{{ route('frontend.posts.show', $post->slug) }}"
                     class="group flex overflow-hidden space-x-4 items-center bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-large p-2">
                     <div class="w-32 h-32 rounded-large overflow-hidden shrink-0">
-                        <img src="{{ asset($post->featured_image) }}" alt="{{ $post->title }}"
-                            class="object-cover h-full w-full group-hover:opacity-75">
+                        <lazy-image url="{{ asset($post->featured_image) }}" alt="{{ $post->title }}" />
                     </div>
                     <div>
                         <h3

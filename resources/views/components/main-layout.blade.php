@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
     <link rel="manifest" href="{{ asset('mix-manifest.json') }}">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123751041-8"></script>
     <script>
@@ -29,24 +29,17 @@
 
         gtag('config', 'UA-123751041-8');
     </script>
-    <script>
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
+            crossorigin="anonymous"></script>
     @isset($styles)
         {{ $styles }}
     @endisset
-    @livewireStyles
-    <script src="{{ mix('js/alpine.js') }}" defer></script>
+    <script src="{{ asset('js/alpine.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased bg-slate-50 dark:bg-slate-700">
-    <x-navbar />
     <div id="app">
+        <x-navbar />
         {{ $slot }}
     </div>
     <div>
@@ -102,53 +95,10 @@
             </div>
         </footer>
     </div>
-    @livewireScripts
     @isset($scripts)
         {{ $scripts }}
     @endisset
-    <script>
-        var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-        // Change the icons inside the button based on previous settings
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
-            themeToggleLightIcon.classList.remove('hidden');
-        } else {
-            themeToggleDarkIcon.classList.remove('hidden');
-        }
-
-        var themeToggleBtn = document.getElementById('theme-toggle');
-
-        themeToggleBtn.addEventListener('click', function() {
-
-            // toggle icons inside button
-            themeToggleDarkIcon.classList.toggle('hidden');
-            themeToggleLightIcon.classList.toggle('hidden');
-
-            // if set via local storage previously
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
-
-                // if NOT set via local storage previously
-            } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
-            }
-
-        });
-    </script>
+    <script src="{{ asset('js/vue.js') }}" defer></script>
 </body>
 
 </html>

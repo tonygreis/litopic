@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="h-full flex overflow-hidden flex-col space-y-4 xl:space-y-0 xl:flex-row max-w-12xl mx-auto">
-            <div class="relative flex-1 bg-gray-900">
+            <div class="relative flex-1 bg-slate-200 dark:bg-gray-900">
                 <div class="aspect-w-16 aspect-h-9">
                     {!! $lesson->embed_html !!}
                 </div>
@@ -73,17 +73,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="m-2 p-2 text-slate-700 dark:text-slate-50">
+                        {{ $lesson->description }}
+                    </div>
                 </div>
-                <div class="m-2 p-2">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
-                                        crossorigin="anonymous"></script>
-                    <!-- lesson-show-bottom -->
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8360309152742177"
-                        data-ad-slot="1369636425" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
+
             </div>
             <div class="w-full xl:w-96 bg-slate-100 dark:bg-slate-900 flex-col flex">
                 <div class="p-4">
@@ -98,26 +92,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex xl:relative flex-col flex-1" scroll-region>
+                <div class="flex xl:relative flex-col flex-1">
                     <ul class="flex xl:overflow-y-scroll xl:absolute flex-col w-full h-full px-2">
                         @foreach ($serie->lessons as $serie_lesson)
-                            @if ($loop->first)
-                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
-                                                                crossorigin="anonymous"></script>
-                                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid"
-                                    data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-8360309152742177"
-                                    data-ad-slot="1561208112"></ins>
-                                <script>
-                                    (adsbygoogle = window.adsbygoogle || [])
-                                    .push({});
-                                </script>
-                            @endif
                             <li class="">
                                 <a class="flex justify-between items-center px-5 py-4 rounded lg:flex-grow mb-1 w-full border border-gray-200 dark:border-none hover:bg-gray-50 dark:hover:bg-slate-700 bg-slate-300 dark:bg-slate-700"
                                     href="{{ route('frontend.lessons.show', [$serie->slug, $serie_lesson->slug]) }}">
                                     <div class="flex items-center w-full">
-                                        <div class="flex justify-center text-slate-900 dark:text-white items-center mr-5 ml-1 min-w-[2.25rem] min-h-[2.25rem] rounded-full bg-gray-100 dark:bg-gray-800"
-                                            :class="{'text-blue-200 bg-blue-500 dark:text-blue-400 dark:bg-blue-700': lsn.id === lesson.id}">
+                                        <div class="flex justify-center text-slate-900 dark:text-white items-center mr-5 ml-1 min-w-[2.25rem] min-h-[2.25rem] rounded-full bg-gray-100 dark:bg-gray-800">
                                             {{ $loop->iteration }}
                                         </div>
                                         <div class="flex-grow min-w-0">

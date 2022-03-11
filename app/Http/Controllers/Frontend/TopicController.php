@@ -39,14 +39,14 @@ class TopicController extends Controller
     {
         $series = $topic->series()->paginate(12);
 
-        SEOMeta::setTitle($topic->name);
+        SEOMeta::setTitle($topic->name .' Tutorials');
         SEOMeta::setDescription($topic->description);
         SEOMeta::addMeta('article:published_time', $topic->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $topic->name, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
 
         OpenGraph::setDescription($topic->description);
-        OpenGraph::setTitle($topic->name);
+        OpenGraph::setTitle($topic->name .' Tutorials');
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'en-us');
@@ -54,7 +54,7 @@ class TopicController extends Controller
         OpenGraph::addImage(Storage::url($topic->poster_path));
         OpenGraph::addImage(Storage::url($topic->poster_path), ['height' => 300, 'width' => 300]);
 
-        JsonLd::setTitle($topic->name);
+        JsonLd::setTitle($topic->name .' Tutorials');
         JsonLd::setDescription($topic->description);
         JsonLd::setType('Article');
         JsonLd::addImage(Storage::url($topic->poster_path));

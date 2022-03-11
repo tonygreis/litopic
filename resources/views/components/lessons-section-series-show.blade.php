@@ -11,8 +11,7 @@
                 <a href="{{ route('frontend.lessons.show', [$lesson->serie->slug, $lesson->slug]) }}"
                     class="group flex overflow-hidden space-x-4 items-center bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-large p-2">
                     <div class="w-32 h-32 rounded-large overflow-hidden shrink-0">
-                        <img src="{{ $lesson->thumbnail_url }}" alt="{{ $lesson->title }}"
-                            class="object-cover h-full w-full group-hover:opacity-75">
+                        <lazy-image url="{{ $lesson->thumbnail_url }}" alt="{{ $lesson->title }}" />
                     </div>
                     <div>
                         <h3
