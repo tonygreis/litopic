@@ -15,8 +15,8 @@
                                 />
                             </div>
                         </div>
-                        <div class="w-full md:w-3/4 p-4 text-center md:text-left">
-                            <h1 class="text-lg text-main-mavi font-bold mx-8">{{ $serie->name }}</h1>
+                        <div class="w-full md:w-3/4 p-4 text-center md:text-left text-slate-800 dark:text-slate-300">
+                            <h1 class="text-lg font-bold mx-8">{{ $serie->name }}</h1>
                             <div class="text-blue-600 mx-8">This serie has {{ count($serie->lessons) }} lessons.</div>
                             <p class="m-2 p-4">
                                 {{ $serie->description }}

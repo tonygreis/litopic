@@ -58,7 +58,8 @@ class WelcomeController extends Controller
             'name' => $post->title,
             'image' => $post->featured_image,
         ]);
-        $response = $lessons->merge($posts);
+        $res = $lessons->merge($posts);
+        $response = $res->take(8);
         return $response;
     }
 }
