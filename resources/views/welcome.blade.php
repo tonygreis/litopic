@@ -67,7 +67,19 @@
             <div class="overflow-hidden mb-4">
                 <x-welcome-lessons-section header="Lessons" :lessons="$lessons" />
             </div>
-
+            <div class="mt-6 p-4 bg-slate-100 dark:bg-slate-900 ark:text-slate-300">
+                <h2>The PHP Framework for Web Artisans</h2><br>
+                Learn Laravel from scratch for begginers.<br>
+                Inertia js tutorial for beginners. <br>
+                Laravel livewire tutorial for beginners.<br>
+                Vuejs tutorial for beginners. <br>
+                <span class="m-2 p-2">laravel framework</span>
+                <span class="m-2 p-2">laravel collection</span>
+                <span class="m-2 p-2">laravel validation</span>
+                <span class="m-2 p-2">laravel authentication</span>
+                <span class="m-2 p-2">laravel api</span>
+                <span class="m-2 p-2">laravel admin panel</span>
+            </div>
         </div>
     </div>
 </x-main-layout>

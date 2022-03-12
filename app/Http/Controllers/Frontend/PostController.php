@@ -25,19 +25,19 @@ class PostController extends Controller
                 SEOMeta::setTitle('Posts | Laravel Vuejs Livewire Tutorials');
                 SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
                 SEOMeta::setCanonical(url()->current());
-        
+
                 OpenGraph::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
                 OpenGraph::setTitle('Posts | Laravel Vuejs Livewire Tutorials');
                 OpenGraph::setUrl(url()->current());
                 OpenGraph::addProperty('type', 'articles');
-        
+
                 TwitterCard::setTitle('Posts | Laravel Vuejs Livewire Tutorials');
                 TwitterCard::setSite('@Laravellercom');
-        
+
                 JsonLd::setTitle('Laravel Tutorials');
                 JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
                 JsonLd::addImage(asset('images/logo.svg'));
-                
+
         return view('posts.index', compact('posts', 'tags'));
     }
 
@@ -45,27 +45,34 @@ class PostController extends Controller
     {
         $post = WinkPost::live()->whereSlug($slug)->firstOrFail();
         $tags = WinkTag::all();
+        $latest_posts = WinkPost::with('tags')
+            ->live()
+            ->orderBy('publish_date', 'DESC')
+            ->take(8)->get();
 
         SEOMeta::setTitle($post->title);
-        SEOMeta::setDescription($post->body);
+        SEOMeta::setDescription($post->excerpt);
         SEOMeta::addMeta('article:published_time', $post->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $post->title, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
 
-        OpenGraph::setDescription($post->body);
+        OpenGraph::setDescription($post->excerpt);
         OpenGraph::setTitle($post->title);
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'en-us');
 
+        TwitterCard::setTitle($post->title);
+        TwitterCard::setSite('@Laravellercom');
+
         OpenGraph::addImage(Storage::url($post->poster_path));
         OpenGraph::addImage(Storage::url($post->poster_path), ['height' => 300, 'width' => 300]);
 
         JsonLd::setTitle($post->title);
-        JsonLd::setDescription($post->body);
+        JsonLd::setDescription($post->excerpt);
         JsonLd::setType('Article');
         JsonLd::addImage(Storage::url($post->poster_path));
 
-        return view('posts.show', compact('post', 'tags'));
+        return view('posts.show', compact('post', 'tags', 'latest_posts'));
     }
 }
