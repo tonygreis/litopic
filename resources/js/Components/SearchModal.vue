@@ -107,9 +107,6 @@
                                     <div class="font-semibold text-sm text-slate-600 dark:text-slate-300">
                                         {{ item.name }}
                                     </div>
-                                    <div class="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                                        {{ item.serie.name }}
-                                    </div>
                                 </div>
                             </li>
                         </ul>

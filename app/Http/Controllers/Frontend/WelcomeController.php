@@ -19,7 +19,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        SEOMeta::setTitle('Laravel Tutorial for beginners | Learn Laravel');
+        SEOMeta::setTitle('Laravel Tutorial from Laraveller | Learn Laravel');
         SEOMeta::setDescription('Laravel tutorial for beginners. Laravel is a powerful MVC PHP framework, designed for developers who need a simple and elegant toolkit to create full-featured web applications.');
         SEOMeta::setCanonical(url()->current());
         SEOMeta::addKeyword(['Laravel', 'tutorlais', 'vuejs', 'livewire']);
