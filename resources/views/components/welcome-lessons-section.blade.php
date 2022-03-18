@@ -9,15 +9,17 @@
         @foreach ($lessons as $lesson)
             <div>
                 <a href="{{ route('frontend.lessons.show', [$lesson->course->slug, $lesson->slug]) }}"
-                    class="group flex overflow-hidden space-x-4 bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-large p-2">
+                    class="group flex overflow-hidden space-x-4 items-center bg-white dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-large p-2">
                     <div class="w-32 h-32 rounded-large overflow-hidden shrink-0">
-                        <lazy-image url="{{ $lesson->thumbnail_url }}" alt="{{ $lesson->title }}"></lazy-image>
+                        <lazy-image url="{{ $lesson->thumbnail_url }}" alt="{{ $lesson->title }}" />
                     </div>
-                    <div class="">
+                    <div>
                         <h3
                             class="font-semibold text-slate-900 dark:text-white leading-tight group-hover:text-slate-800 dark:group-hover:text-slate-200">
                             {{ $lesson->title }}
                         </h3>
+                        <span
+                            class="mt-3 text-sm font-sans font-semibold text-indigo-500">{{ $lesson->course->name }}</span>
                     </div>
                 </a>
             </div>
