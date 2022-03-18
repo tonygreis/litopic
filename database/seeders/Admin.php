@@ -20,7 +20,7 @@ class Admin extends Seeder
             'name' => 'admin',
             'email' => 'laraveller2021@gmail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('Laraveller2629'), // password
+            'password' => bcrypt('password'), // password
             'remember_token' => Str::random(10),
         ])->assignRole('admin');
     }

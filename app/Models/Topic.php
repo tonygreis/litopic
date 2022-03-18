@@ -10,7 +10,7 @@ class Topic extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'poster_path'];
+    protected $fillable = ['name', 'slug', 'poster_path', 'meta'];
     protected $casts = ['meta' => 'array'];
 
 

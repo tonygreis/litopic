@@ -22,7 +22,8 @@ class Lesson extends Model
         'description',
         'external_id',
         'published_at',
-        'approved_at'
+        'approved_at',
+        'meta'
     ];
 
     protected $dates = ['published_at'];
