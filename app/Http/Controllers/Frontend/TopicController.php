@@ -17,10 +17,10 @@ class TopicController extends Controller
         $topics = Topic::latest()->paginate(12);
 
         SEOMeta::setTitle('Topics | Laravel Tutorials');
-        SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free full courses for Laravel vuejs, inertiajs, livewire and more.');
         SEOMeta::setCanonical(url()->current());
 
-        OpenGraph::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        OpenGraph::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free full courses for Laravel vuejs, inertiajs, livewire and more.');
         OpenGraph::setTitle('Topics | Laravel Tutorials');
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'articles');
@@ -29,7 +29,7 @@ class TopicController extends Controller
         TwitterCard::setSite('@Laravellercom');
 
         JsonLd::setTitle('Laravel Tutorials');
-        JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free full courses for Laravel vuejs, inertiajs, livewire and more.');
         JsonLd::addImage(asset('images/logo.svg'));
 
         return view('topics.index', compact('topics'));

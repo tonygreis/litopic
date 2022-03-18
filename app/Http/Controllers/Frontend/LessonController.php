@@ -18,20 +18,20 @@ class LessonController extends Controller
     {
         $lessons = Lesson::orderBy('updated_at', 'desc')->paginate(12);
 
-        SEOMeta::setTitle('Lessons | Laravel Tutorials');
-        SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        SEOMeta::setTitle('Free Laravel Lessons | Laravel Tutorials');
+        SEOMeta::setDescription('Free Laravel course lessons to learn. watch full Laravel inertiajs, livewire, vuehs tutorials for free.');
         SEOMeta::setCanonical(url()->current());
 
-        OpenGraph::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
-        OpenGraph::setTitle('Lessons | Laravel Tutorials');
+        OpenGraph::setDescription('Free Laravel course lessons to learn. watch full Laravel inertiajs, livewire, vuehs tutorials for free.');
+        OpenGraph::setTitle('Free Laravel Lessons | Laravel Tutorials');
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('Lessons | Laravel Tutorials');
+        TwitterCard::setTitle('Free Laravel Lessons | Laravel Tutorials');
         TwitterCard::setSite('@Laravellercom');
 
-        JsonLd::setTitle('Lessons | Laravel Tutorials');
-        JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
+        JsonLd::setTitle('Free Laravel Lessons | Laravel Tutorials');
+        JsonLd::setDescription('Free Laravel course lessons to learn. watch full Laravel inertiajs, livewire, vuehs tutorials for free.');
         JsonLd::addImage(asset('images/logo.svg'));
 
 

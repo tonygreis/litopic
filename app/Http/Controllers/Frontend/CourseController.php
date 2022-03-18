@@ -20,19 +20,19 @@ class CourseController extends Controller
             ->withCount('lessons')
             ->paginate(12);
 
-        SEOMeta::setTitle('All Free Courses Laravel Tutorials');
+        SEOMeta::setTitle('All Free Laravel Courses Tutorials');
         SEOMeta::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
         SEOMeta::setCanonical(url()->current());
 
         OpenGraph::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
-        OpenGraph::setTitle('Courses | Laravel Tutorials');
+        OpenGraph::setTitle('All Free Laravel Courses Tutorials');
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('Courses | Laravel Tutorials');
+        TwitterCard::setTitle('All Free Laravel Courses Tutorials');
         TwitterCard::setSite('@Laravellercom');
 
-        JsonLd::setTitle('Courses | Laravel Tutorials');
+        JsonLd::setTitle('All Free Laravel Courses Tutorials');
         JsonLd::setDescription('Welcome to laraveller. Learn Laravel tutorials. Free tutorials.');
         JsonLd::addImage(asset('images/logo.svg'));
 
