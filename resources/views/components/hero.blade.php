@@ -3,7 +3,7 @@
         <div
             class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 class="text-4xl text-white md:text-6xl mb-4 font-bold flex flex-col">
-                Laravel Tutorial For Beginners
+                Laravel Tutorials For Beginners
             </h1>
             <p class="mb-8 mt-2 leading-relaxed text-gray-200">
                 Learn Laravel from beginner to advanced. Laravel Livewire tutorials, Vuejs, Inertiajs and more.

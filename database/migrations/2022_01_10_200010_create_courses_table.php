@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTopicSerieTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateTopicSerieTable extends Migration
      */
     public function up()
     {
-        Schema::create('topic_serie', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('topic_id')->constrained();
-            $table->foreignId('serie_id')->constrained();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('poster_path');
+            $table->text('description')->nullable();
+            $table->json('meta')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateTopicSerieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topic_serie');
+        Schema::dropIfExists('courses');
     }
-}
+};

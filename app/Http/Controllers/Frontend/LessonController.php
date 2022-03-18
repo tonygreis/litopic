@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Lesson;
-use App\Models\Serie;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -38,15 +38,15 @@ class LessonController extends Controller
         return view('lessons.index', compact('lessons'));
     }
 
-    public function show(Serie $serie, Lesson $lesson)
+    public function show(Course $course, Lesson $lesson)
     {
-        $next = Lesson::where([['id', '>', $lesson->id], ['serie_id', $serie->id]])->orderBy('id')->first();
-        $previous = Lesson::where([['id', '<', $lesson->id], ['serie_id', $serie->id]])->orderBy('id', 'desc')->first();
+        $next = Lesson::where([['id', '>', $lesson->id], ['course_id', $course->id]])->orderBy('id')->first();
+        $previous = Lesson::where([['id', '<', $lesson->id], ['course_id', $course->id]])->orderBy('id', 'desc')->first();
 
         SEOMeta::setTitle($lesson->title);
         SEOMeta::setDescription($lesson->description);
         SEOMeta::addMeta('article:published_time', $lesson->published_at->toW3CString(), 'property');
-        SEOMeta::addMeta('article:section', $lesson->serie->name, 'property');
+        SEOMeta::addMeta('article:section', $lesson->course->name, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
 
         OpenGraph::setDescription($lesson->description);
@@ -63,6 +63,6 @@ class LessonController extends Controller
         JsonLd::setType('Article');
         JsonLd::addImage($lesson->thumbnail_url);
 
-        return view('lessons.show', compact('lesson', 'serie', 'next', 'previous'));
+        return view('lessons.show', compact('lesson', 'course', 'next', 'previous'));
     }
 }

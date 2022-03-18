@@ -37,17 +37,16 @@
                             :active="request()->routeIs('frontend.topics.index')">
                             Topic
                         </x-nav-link>
-                        <x-nav-link :href="route('frontend.series.index')"
-                            :active="request()->routeIs('frontend.series.index')">
-                            Series
+                        <x-nav-link :href="route('frontend.courses.index')"
+                            :active="request()->routeIs('frontend.courses.index')">
+                            Courses
                         </x-nav-link>
                         <x-nav-link :href="route('frontend.lessons.index')"
                             :active="request()->routeIs('frontend.lessons.index')">
                             Lessons
                         </x-nav-link>
-                        <x-nav-link :href="route('frontend.posts.index')"
-                            :active="request()->routeIs('frontend.posts.index')">
-                            Posts
+                        <x-nav-link href="https://blog.laraveller.com">
+                            Blog
                         </x-nav-link>
                     </div>
                 </div>
@@ -68,12 +67,12 @@
             <a href="{{ route('frontend.topics.index') }}"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Topics</a>
 
-            <a href="{{ route('frontend.series.index') }}"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Series</a>
+            <a href="{{ route('frontend.courses.index') }}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Courses</a>
 
             <a href="{{ route('frontend.lessons.index') }}"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Lessons</a>
-                <a href="{{ route('frontend.posts.index') }}"
+            <a href="https://blog.laraveller.com"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Posts</a>
         </div>
     </div>

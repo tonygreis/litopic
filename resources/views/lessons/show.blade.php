@@ -2,7 +2,8 @@
     <div class="py-1">
         <div class="bg-slate-200 dark:bg-slate-700 w-full py-5 px-3 md:px-8 flex flex-wrap lg:flex-nowrap items-center">
             <div class="relative w-full flex items-center">
-                <a class="flex items-center md:mr-4" href="{{ route('frontend.series.show', $lesson->serie->slug) }}">
+                <a class="flex items-center md:mr-4"
+                    href="{{ route('frontend.courses.show', $lesson->course->slug) }}">
                     <svg width="24" height="24" fill="none" viewBox="0 0 24 24"
                         class="w-7 h-7 text-indigo-800 dark:text-white mr-3">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -12,12 +13,12 @@
                     </svg>
                 </a>
                 <h1 class="md:text-lg text-indigo-800 dark:text-gray-200 truncate text-ellipsis">
-                    {{ $lesson->serie->name }}</h1>
+                    {{ $lesson->course->name }}</h1>
             </div>
             <div class="flex items-center ml-4">
                 {{-- <div
                         class="text-xs flex uppercase tracking-wide font-medium">
-                        <span class="p-1 m-1 flex text-slate-900 dark:text-slate-300 bg-slate-300 dark:bg-slate-800 rounded" v-for="topic in serie.topics">{{ topic.name }}</span>
+                        <span class="p-1 m-1 flex text-slate-900 dark:text-slate-300 bg-slate-300 dark:bg-slate-800 rounded" v-for="topic in course.topics">{{ topic.name }}</span>
                     </div> --}}
             </div>
         </div>
@@ -40,7 +41,7 @@
                                     <div class="flex items-center">
                                         @if ($previous)
                                             <div class="v-popper v-popper--theme-null">
-                                                <a href="{{ route('frontend.lessons.show', [$serie->slug, $previous->slug]) }}"
+                                                <a href="{{ route('frontend.lessons.show', [$course->slug, $previous->slug]) }}"
                                                     class="p-2 rounded-lg hover:bg-gray-100 text-blue-500 dark:text-blue-700 dark:hover:bg-gray-800 disabled:opacity-25 disabled:hover:bg-transparent">
                                                     <svg fill="none" viewBox="0 0 24 24" class="w-6 h-6">
                                                         <path stroke="currentColor" stroke-linecap="round"
@@ -55,7 +56,7 @@
                                         @endif
                                         @if ($next)
                                             <div class="v-popper v-popper--theme-null">
-                                                <a href="{{ route('frontend.lessons.show', [$serie->slug, $next->slug]) }}"
+                                                <a href="{{ route('frontend.lessons.show', [$course->slug, $next->slug]) }}"
                                                     class="p-2 rounded-lg hover:bg-gray-100 text-blue-500 dark:text-blue-700 dark:hover:bg-gray-800 disabled:opacity-25 disabled:hover:bg-transparent">
                                                     <svg fill="none" viewBox="0 0 24 24" class="w-6 h-6">
                                                         <path stroke="currentColor" stroke-linecap="round"
@@ -88,25 +89,26 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
-                            <span>{{ $serie->lessons()->count() }} Lessons</span>
+                            <span>{{ $course->lessons()->count() }} Lessons</span>
                         </div>
                     </div>
                 </div>
                 <div class="flex xl:relative flex-col flex-1">
                     <ul class="flex xl:overflow-y-scroll xl:absolute flex-col w-full h-full px-2">
-                        @foreach ($serie->lessons as $serie_lesson)
+                        @foreach ($course->lessons as $course_lesson)
                             <li class="">
                                 <a class="flex justify-between items-center px-5 py-4 rounded lg:flex-grow mb-1 w-full border border-gray-200 dark:border-none hover:bg-gray-50 dark:hover:bg-slate-700 bg-slate-300 dark:bg-slate-700"
-                                    href="{{ route('frontend.lessons.show', [$serie->slug, $serie_lesson->slug]) }}">
+                                    href="{{ route('frontend.lessons.show', [$course->slug, $course_lesson->slug]) }}">
                                     <div class="flex items-center w-full">
-                                        <div class="flex justify-center text-slate-900 dark:text-white items-center mr-5 ml-1 min-w-[2.25rem] min-h-[2.25rem] rounded-full bg-gray-100 dark:bg-gray-800">
+                                        <div
+                                            class="flex justify-center text-slate-900 dark:text-white items-center mr-5 ml-1 min-w-[2.25rem] min-h-[2.25rem] rounded-full bg-gray-100 dark:bg-gray-800">
                                             {{ $loop->iteration }}
                                         </div>
                                         <div class="flex-grow min-w-0">
                                             <!---->
                                             <h2
                                                 class="text-dark-blue dark:text-gray-400 leading-snug text-ellipsis text-sm">
-                                                {{ $serie_lesson->title }}</h2>
+                                                {{ $course_lesson->title }}</h2>
                                             <div
                                                 class="text-xs text-dark-2 dark:text-gray-500 opacity-75 flex items-center">
                                                 <!---->
@@ -117,7 +119,7 @@
                                                     <path stroke="currentColor" stroke-width="1.5" d="M12 8V12L14 14">
                                                     </path>
                                                 </svg>
-                                                <div class="whitespace-nowrap">{{ $serie_lesson->duration }}</div>
+                                                <div class="whitespace-nowrap">{{ $course_lesson->duration }}</div>
                                             </div>
                                         </div>
                                     </div>

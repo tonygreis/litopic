@@ -18,10 +18,10 @@ class YoutubeTalk
         $this->id = $id;
     }
 
-    public function save(Serie $serie, Lesson $lesson)
+    public function save(Course $course, Lesson $lesson)
     {
         $lesson->fill([
-            'serie_id' => $serie->id,
+            'course_id' => $course->id,
             'title' => $this->json('items.0.snippet.title'),
             'duration' => CarbonInterval::make($this->json('items.0.contentDetails.duration'))->totalSeconds,
             'embed_html' => $this->json('items.0.player.embedHtml'),
@@ -40,7 +40,7 @@ class YoutubeTalk
 
         $this->response = Http::asJson()
             ->get(
-                config('services.youtube.endpoint').'/videos',
+                config('services.youtube.endpoint') . '/videos',
                 [
                     'part' => 'snippet,player,contentDetails',
                     'id' => $this->id,

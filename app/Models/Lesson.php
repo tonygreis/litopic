@@ -13,7 +13,7 @@ class Lesson extends Model
     use HasFactory, Searchable;
 
     protected $fillable = [
-        'serie_id',
+        'course_id',
         'title',
         'slug',
         'duration',
@@ -26,6 +26,8 @@ class Lesson extends Model
     ];
 
     protected $dates = ['published_at'];
+    protected $casts = ['meta' => 'array'];
+
 
 
     /**
@@ -48,9 +50,8 @@ class Lesson extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function serie()
+    public function course()
     {
-        return $this->belongsTo(Serie::class);
+        return $this->belongsTo(Course::class);
     }
-
 }

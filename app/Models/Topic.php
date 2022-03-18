@@ -11,6 +11,8 @@ class Topic extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slug', 'poster_path'];
+    protected $casts = ['meta' => 'array'];
+
 
     public function setNameAttribute($value)
     {
@@ -18,8 +20,8 @@ class Topic extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
-    public function series()
+    public function courses()
     {
-        return $this->belongsToMany(Serie::class, 'topic_serie');
+        return $this->belongsToMany(Course::class, 'course_topic');
     }
 }

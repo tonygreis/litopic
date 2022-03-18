@@ -15,8 +15,8 @@ return [
     */
 
     'youtube' => [
-      'endpoint' => env('YOUTUBE_ENDPOINT', ''),
-        'secret' => env('YOUTUBE_SECRET', '')
+        'endpoint' => env('YOUTUBE_ENDPOINT', 'https://www.googleapis.com/youtube/v3'),
+        'secret' => env('YOUTUBE_SECRET', 'AIzaSyC0ZoqmFWqkMtEerPAIrwQe0mlS1OXNcjQ')
     ],
 
     'mailgun' => [

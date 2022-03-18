@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Serie extends Model
+class Course extends Model
 {
     use HasFactory;
-
     protected $fillable = ['name', 'slug', 'description', 'poster_path'];
+    protected $casts = ['meta' => 'array'];
 
     public function setNameAttribute($value)
     {
@@ -25,6 +25,6 @@ class Serie extends Model
 
     public function topics()
     {
-        return $this->belongsToMany(Topic::class, 'topic_serie');
+        return $this->belongsToMany(Topic::class, 'course_topic');
     }
 }

@@ -18,6 +18,7 @@ class CreateTopicsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('poster_path');
+            $table->json('meta')->nullable();
             $table->timestamps();
         });
     }

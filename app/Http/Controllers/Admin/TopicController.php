@@ -16,7 +16,7 @@ class TopicController extends Controller
         $perPage = \Illuminate\Support\Facades\Request::input('perPage') ?: 5;
         return Inertia::render('Admin/Topics/Index', [
             'topics' => Topic::query()
-                ->when(Request::input('search'), function($query, $search) {
+                ->when(Request::input('search'), function ($query, $search) {
                     $query->where('name', 'like', "%{$search}%");
                 })
                 ->paginate($perPage)
@@ -25,9 +25,9 @@ class TopicController extends Controller
                     'id' => $topic->id,
                     'name' => $topic->name,
                     'slug' => $topic->slug,
-                    'poster_path' => asset('storage/'. $topic->poster_path ),
+                    'poster_path' => asset('storage/' . $topic->poster_path),
                     'deleted_at' => $topic->deleted_at,
-                    'series' => $topic->series ? $topic->series->only('name') : null,
+                    'courses' => $topic->courses ? $topic->courses->only('name') : null,
                 ]),
             'filters' => Request::only(['search', 'perPage'])
         ]);
@@ -56,15 +56,15 @@ class TopicController extends Controller
     {
         return Inertia::render('Admin/Topics/Edit', [
             'topic' => $topic,
-            'image' => asset('storage/'. $topic->poster_path )
+            'image' => asset('storage/' . $topic->poster_path)
         ]);
     }
 
     public function update(Topic $topic)
     {
         $image = $topic->poster_path;
-        if (Request::file('poster_path')){
-            Storage::delete('public/'. $topic->poster_path);
+        if (Request::file('poster_path')) {
+            Storage::delete('public/' . $topic->poster_path);
             $image = Request::file('poster_path')->store('topics', 'public');
         }
         $topic->update([
@@ -76,7 +76,7 @@ class TopicController extends Controller
 
     public function destroy(Topic $topic)
     {
-        Storage::delete('public/'. $topic->poster_path);
+        Storage::delete('public/' . $topic->poster_path);
         $topic->delete();
         return Redirect::route('admin.topics.index')->with('flash.banner', 'Topic deleted.')->with('flash.bannerStyle', 'danger');
     }

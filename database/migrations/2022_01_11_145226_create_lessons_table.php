@@ -15,7 +15,7 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('serie_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->string('slug')->unique();
             $table->integer('duration');
@@ -25,6 +25,7 @@ class CreateLessonsTable extends Migration
             $table->string('external_id');
             $table->date('published_at');
             $table->dateTime('approved_at')->nullable();
+            $table->json('meta')->nullable();
             $table->timestamps();
         });
     }
