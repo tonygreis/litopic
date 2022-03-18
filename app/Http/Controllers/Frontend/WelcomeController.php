@@ -49,7 +49,7 @@ class WelcomeController extends Controller
         $lessons = Lesson::search($request->term)->take(8)->query(function ($builder) {
             $builder->with('course');
         })->get()->map(fn ($lesson) => [
-            'url' => route('frontend.lessons.show', [$lesson->serie->slug, $lesson->slug]),
+            'url' => route('frontend.lessons.show', [$lesson->course->slug, $lesson->slug]),
             'name' => $lesson->title,
             'image' => $lesson->thumbnail_url,
             'course' => $lesson->course
