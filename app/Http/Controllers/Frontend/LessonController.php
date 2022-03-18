@@ -43,14 +43,14 @@ class LessonController extends Controller
         $next = Lesson::where([['id', '>', $lesson->id], ['course_id', $course->id]])->orderBy('id')->first();
         $previous = Lesson::where([['id', '<', $lesson->id], ['course_id', $course->id]])->orderBy('id', 'desc')->first();
 
-        SEOMeta::setTitle($lesson->title);
+        SEOMeta::setTitle($lesson->title . ' - ' . $course->name);
         SEOMeta::setDescription($lesson->description);
         SEOMeta::addMeta('article:published_time', $lesson->published_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $lesson->course->name, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
 
         OpenGraph::setDescription($lesson->description);
-        OpenGraph::setTitle($lesson->title);
+        OpenGraph::setTitle($lesson->title . ' - ' . $course->name);
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'en-us');
@@ -58,7 +58,7 @@ class LessonController extends Controller
         OpenGraph::addImage($lesson->thumbnail_url);
         OpenGraph::addImage($lesson->thumbnail_url, ['height' => 300, 'width' => 300]);
 
-        JsonLd::setTitle($lesson->title);
+        JsonLd::setTitle($lesson->title . ' - ' . $course->name);
         JsonLd::setDescription($lesson->description);
         JsonLd::setType('Article');
         JsonLd::addImage($lesson->thumbnail_url);
