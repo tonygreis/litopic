@@ -44,6 +44,7 @@ class TopicController extends Controller
         SEOMeta::addMeta('article:published_time', $topic->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $topic->name, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react', 'livewire', 'inertia js']);
+        SEOMeta::setCanonical(url()->current());
 
         OpenGraph::setDescription($topic->description);
         OpenGraph::setTitle($topic->name . ' Tutorials');

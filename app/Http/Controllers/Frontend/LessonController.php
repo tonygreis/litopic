@@ -48,6 +48,7 @@ class LessonController extends Controller
         SEOMeta::addMeta('article:published_time', $lesson->published_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $lesson->course->name, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
+        SEOMeta::setCanonical(url()->current());
 
         OpenGraph::setDescription($lesson->description);
         OpenGraph::setTitle($lesson->title . ' - ' . $course->name);

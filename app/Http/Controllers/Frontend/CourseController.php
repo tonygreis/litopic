@@ -48,6 +48,7 @@ class CourseController extends Controller
         SEOMeta::addMeta('article:published_time', $course->created_at->toW3CString(), 'property');
         SEOMeta::addMeta('article:section', $course->name, 'property');
         SEOMeta::addKeyword(['laravel', 'vuejs', 'react']);
+        SEOMeta::setCanonical(url()->current());
 
         OpenGraph::setDescription($course->description);
         OpenGraph::setTitle($course->name);
