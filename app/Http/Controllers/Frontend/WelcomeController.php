@@ -21,11 +21,11 @@ class WelcomeController extends Controller
     public function index()
     {
         SEOMeta::setTitle('Laravel Tutorials for beginners | Laraveller');
-        SEOMeta::setDescription('Laravel Tutorials for beginners. Laravel Livewire tutorials, Vuejs, Inertiajs and more. Laravel free courses.');
+        SEOMeta::setDescription('Learn Laravel from beginner to advanced. Laravel Livewire tutorials, Vuejs, Inertiajs and more. Laravel free courses.');
         SEOMeta::setCanonical(url()->current());
         SEOMeta::addKeyword(['Laravel', 'tutorlais', 'vuejs', 'livewire']);
 
-        OpenGraph::setDescription('Laravel Tutorials for beginners. Laravel Livewire tutorials, Vuejs, Inertiajs and more. Laravel free courses.');
+        OpenGraph::setDescription('Learn Laravel from beginner to advanced. Laravel Livewire tutorials, Vuejs, Inertiajs and more. Laravel free courses.');
         OpenGraph::setTitle('Laravel Tutorials for beginners | Laraveller');
         OpenGraph::setUrl(url()->current());
         OpenGraph::addProperty('type', 'articles');
@@ -34,7 +34,7 @@ class WelcomeController extends Controller
         TwitterCard::setSite('@Laravellercom');
 
         JsonLd::setTitle('Laravel Tutorials for beginners | Laraveller');
-        JsonLd::setDescription('Laravel Tutorials for beginners. Laravel Livewire tutorials, Vuejs, Inertiajs and more. Laravel free courses.');
+        JsonLd::setDescription('Learn Laravel from beginner to advanced. Laravel Livewire tutorials, Vuejs, Inertiajs and more. Laravel free courses.');
         JsonLd::addImage(asset('images/logo.svg'));
 
         $topics = Topic::orderBy('created_at', 'desc')->take(8)->get();
