@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Post;
+use App\Models\Serie;
 use App\Models\Topic;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\TwitterCard;
+use Illuminate\Support\Facades\Request;
+use Inertia\Inertia;
+use Wink\WinkPost;
 
 class WelcomeController extends Controller
 {
