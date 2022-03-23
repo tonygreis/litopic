@@ -35,10 +35,10 @@
                   Courses
                 </BreezeNavLink>
                 <BreezeNavLink
-                  :href="route('admin.tags.index')"
-                  :active="route().current('admin.tags.index')"
+                  :href="route('admin.components.index')"
+                  :active="route().current('admin.components.index')"
                 >
-                  Tags
+                  Components
                 </BreezeNavLink>
               </div>
             </div>

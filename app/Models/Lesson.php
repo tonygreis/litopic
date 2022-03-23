@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Scout\Attributes\SearchUsingPrefix;
 use Laravel\Scout\Searchable;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Lesson extends Model
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, HasSlug;
 
     protected $fillable = [
         'course_id',
@@ -45,10 +47,11 @@ class Lesson extends Model
         ];
     }
 
-    public function setTitleAttribute($value)
+    public function getSlugOptions(): SlugOptions
     {
-        $this->attributes['title'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
 
     public function course()

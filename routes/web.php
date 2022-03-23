@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\BlockController;
+use App\Http\Controllers\Admin\ComponentController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController;
+use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SerieController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TopicController;
@@ -35,6 +38,9 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
     Route::post('/courses/{course}/add-topic', [AdminCourseController::class, 'addTopic'])->name('courses.add_topic');
     Route::resource('/courses/{course}/lessons', LessonController::class);
     Route::resource('/tags', TagController::class);
+    Route::resource('/components', ComponentController::class);
+    Route::resource('/components/{component:slug}/sections', SectionController::class);
+    Route::resource('/components/{component:slug}/sections/{section:slug}/blocks', BlockController::class);
 });
 
 Route::get('/dashboard', function () {

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-16x16.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
     <link rel="manifest" href="{{ asset('mix-manifest.json') }}">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -35,7 +35,7 @@
     <script src="{{ asset('js/vue.js') }}" defer></script>
     <script src="{{ asset('js/alpine.js') }}" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8360309152742177"
-            crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </head>
 
 <body class="font-sans antialiased bg-slate-50 dark:bg-slate-700">
@@ -47,11 +47,7 @@
         <footer class="text-gray-600 body-font">
             <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
                 <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2"
-                        class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
+                    <img src="{{ asset('img/logo.png') }}" class="w-10 h-10">
                     <span class="ml-3 text-xl">Laraveller</span>
                 </a>
                 <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">©

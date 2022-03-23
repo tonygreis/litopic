@@ -5,17 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Course extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
     protected $fillable = ['name', 'slug', 'description', 'poster_path', 'meta'];
     protected $casts = ['meta' => 'array'];
 
-    public function setNameAttribute($value)
+    public function getSlugOptions(): SlugOptions
     {
-        $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value);
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
     }
 
     public function lessons()

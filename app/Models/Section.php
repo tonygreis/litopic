@@ -4,17 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Topic extends Model
+class Section extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $fillable = ['name', 'slug', 'poster_path', 'meta'];
-    protected $casts = ['meta' => 'array'];
-
+    protected $fillable = ['component_id', 'name', 'meta', 'slug'];
 
     public function getSlugOptions(): SlugOptions
     {
@@ -23,8 +20,13 @@ class Topic extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function courses()
+    public function component()
     {
-        return $this->belongsToMany(Course::class, 'course_topic');
+        return $this->belongsTo(Component::class);
+    }
+
+    public function blocks()
+    {
+        return $this->hasMany(Block::class);
     }
 }
