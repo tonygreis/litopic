@@ -11,10 +11,11 @@
     {!! JsonLd::generate() !!}
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-16x16.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('img/logo.png') }}">
-    <link rel="manifest" href="{{ asset('mix-manifest.json') }}">
+    {{-- Logo --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Global site tag (gtag.js) - Google Analytics -->
