@@ -32,8 +32,7 @@ class ComponentController extends Controller
         JsonLd::setDescription('Free Tailwind CSS Components | Laraveller. Tailwind css cards, tables and more. Tailwind css responsive navigation.');
         JsonLd::addImage(asset('images/logo.svg'));
         $components = Component::all();
-        $first_component = Component::orderBy('id', 'desc')->first();
-        return view('main.components.index', compact('components', 'first_component'));
+        return view('main.components.index', compact('components'));
     }
 
     public function show($slug)
