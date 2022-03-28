@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('poster_path')->nullable();
             $table->json('meta')->nullable();
+            $table->text('html')->nullable();
+            $table->text('vue')->nullable();
+            $table->text('react')->nullable();
             $table->timestamps();
         });
     }

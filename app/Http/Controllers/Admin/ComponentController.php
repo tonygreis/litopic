@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Component;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ComponentController extends Controller
@@ -67,17 +68,6 @@ class ComponentController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -85,7 +75,11 @@ class ComponentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $component = Component::find($id);
+        return Inertia::render('Admin/Components/Edit', [
+            'component' => $component,
+            'image' => asset('storage/' . $component->poster_path)
+        ]);
     }
 
     /**
@@ -95,9 +89,22 @@ class ComponentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $component = Component::findOrFail($id);
+        $image = $component->poster_path;
+        if (Request::file('poster_path')) {
+            Storage::delete('public/' . $component->poster_path);
+            $image = Request::file('poster_path')->store('components', 'public');
+        }
+        Request::validate([
+            'name' => 'required',
+        ]);
+        $component->update([
+            'name' => Request::input('name'),
+            'poster_path' => $image,
+        ]);
+        return Redirect::route('admin.components.index')->with('flash.banner', 'Component updated.');
     }
 
     /**
@@ -108,6 +115,9 @@ class ComponentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $component = Component::findOrFail($id);
+        Storage::delete('public/' . $component->poster_path);
+        $component->delete();
+        return Redirect::route('admin.components.index')->with('flash.banner', 'Components deleted.')->with('flash.bannerStyle', 'danger');
     }
 }

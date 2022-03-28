@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Block;
+use App\Models\Component;
+use App\Models\Section;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 
 class BlockController extends Controller
 {
@@ -12,9 +18,21 @@ class BlockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Component $component, Section $section)
     {
-        //
+        $perPage = \Illuminate\Support\Facades\Request::input('perPage') ?: 5;
+        return Inertia::render('Admin/Components/Sections/Blocks/Index', [
+            'component' => $component,
+            'section' => $section,
+            'blocks' => Block::query()->latest()
+                ->where('section_id', $section->id)
+                ->when(\Illuminate\Support\Facades\Request::input('search'), function ($query, $search) {
+                    $query->where('name', 'like', "%{$search}%");
+                })
+                ->paginate($perPage)
+                ->withQueryString(),
+            'filters' => Request::only(['search', 'perPage'])
+        ]);
     }
 
     /**
@@ -22,9 +40,12 @@ class BlockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Component $component, Section $section)
     {
-        //
+        return Inertia::render('Admin/Components/Sections/Blocks/Create', [
+            'component' => $component,
+            'section' => $section
+        ]);
     }
 
     /**
@@ -33,31 +54,39 @@ class BlockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Component $component, Section $section)
     {
-        //
-    }
+        $image = null;
+        Request::validate([
+            'name' => 'required',
+        ]);
+        if (Request::hasFile('poster_path')){
+            $image = Request::file('poster_path')->store('blocks', 'public');
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $section->blocks()->create([
+            'name' => Request::input('name'),
+            'html' => Request::input('html'),
+            'vue' => Request::input('vue'),
+            'react' => Request::input('react'),
+            'poster_path' => $image
+        ]);
 
+        return to_route('admin.blocks.index', [$component->id, $section->id])->with('flash.banner', 'Block Created.');
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Component $component, Section $section, Block $block)
     {
-        //
+        return Inertia::render('Admin/Components/Sections/Blocks/Edit', [
+            'component' => $component,
+            'section' => $section,
+            'block' => $block
+        ]);
     }
 
     /**
@@ -67,9 +96,24 @@ class BlockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Component $component, Section $section, Block $block)
     {
-        //
+        $image = null;
+        Request::validate([
+            'name' => 'required'
+        ]);
+        if (Request::hasFile('poster_path')){
+            Storage::delete('public/' . $block->poster_path);
+            $image = Request::file('poster_path')->store('blocks', 'public');
+        }
+        $block->update([
+            'name' => Request::input('name'),
+            'html' => Request::input('html'),
+            'vue' => Request::input('vue'),
+            'react' => Request::input('react'),
+            'poster_path' => $image
+        ]);
+        return to_route('admin.blocks.index', [$component->id, $section->id])->with('flash.banner', 'Block updated.');
     }
 
     /**
@@ -78,8 +122,12 @@ class BlockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Component $component, Section $section, Block $block)
     {
-        //
+        if ($block->poster_path){
+            Storage::delete('public/' . $block->poster_path);
+        }
+        $block->delete();
+        return Redirect::route('admin.blocks.index', [$component->id, $section->id])->with('flash.banner', 'Block deleted.')->with('flash.bannerStyle', 'danger');
     }
 }

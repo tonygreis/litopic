@@ -1,4 +1,4 @@
-<nav class="bg-gray-800" x-data="{ openMobileMenu: false }">
+<nav class="bg-gray-800 w-full" x-data="{ openMobileMenu: false }">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -22,12 +22,7 @@
             </div>
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <a href="/" class="flex-shrink-0 flex items-center">
-                    <h2
-                        class="block lg:hidden text-3xl font-semibold font-serif text-transparent bg-gradient-to-r bg-clip-text from-pink-700 to-purple-600">
-                        L</h2>
-                    <h2
-                        class="hidden lg:block text-3xl font-semibold font-serif text-transparent bg-gradient-to-r bg-clip-text from-pink-700 to-purple-600">
-                        Laraveller</h2>
+                    <img src="{{ asset('img/logo.png') }}" class="w-10 h-10" alt="Laraveller logo">
                 </a>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
@@ -45,6 +40,10 @@
                         </x-nav-link>
                         <x-nav-link href="https://blog.laraveller.com">
                             Blog
+                        </x-nav-link>
+                        <x-nav-link :href="route('frontend.components.index')"
+                                    :active="request()->routeIs('frontend.components.index')">
+                            Components
                         </x-nav-link>
                     </div>
                 </div>

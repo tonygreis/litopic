@@ -1,9 +1,9 @@
 <template>
-  <Head title="Components Index" />
+  <Head title="Sections Index" />
   <AdminLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Components Index
+        Sections Index
       </h2>
     </template>
     <div class="py-2">
@@ -11,8 +11,8 @@
         <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
           <section class="container mx-auto p-6 font-mono">
             <div class="w-full flex mb-4 p-2 justify-end">
-              <ButtonLink :link="route('admin.components.create')"
-                >Create Component</ButtonLink
+              <ButtonLink :link="route('admin.sections.create', component.id)"
+                >Create Section</ButtonLink
               >
             </div>
 
@@ -23,7 +23,7 @@
                 <Filter
                   v-model:search="search"
                   v-model:per-page="perPage"
-                  @getPerPage="getComponent"
+                  @getPerPage="getSections"
                 />
               </div>
 
@@ -39,29 +39,25 @@
                   <template v-slot:tableHeader>
                     <TableHead>Name</TableHead>
                     <TableHead>Slug</TableHead>
-                    <TableHead>Poster</TableHead>
                     <TableHead></TableHead>
                   </template>
-                  <TableRow
-                    v-for="component in components.data"
-                    :key="component.id"
-                  >
-                    <TableData>{{ component.name }}</TableData>
-                    <TableData>{{ component.slug }}</TableData>
-                    <TableData>
-                      <img
-                        :src="component.poster_path"
-                        class="w-12 h-12 rounded"
-                      />
-                    </TableData>
+                  <TableRow v-for="section in sections.data" :key="section.id">
+                    <TableData>{{ section.name }}</TableData>
+                    <TableData>{{ section.slug }}</TableData>
+
                     <TableData>
                       <div class="flex justify-around">
                         <ButtonLink
-                          :link="route('admin.sections.index', component.id)"
-                          >sections</ButtonLink
+                          :link="
+                            route('admin.blocks.index', [
+                              component.id,
+                              section.id,
+                            ])
+                          "
+                          >Blocks</ButtonLink
                         >
                         <ButtonLink
-                          :link="route('admin.components.edit', component.id)"
+                          :link="route('admin.sections.edit', [component.id,section.id])"
                           >Edit</ButtonLink
                         >
                         <ButtonLink
@@ -69,17 +65,15 @@
                           method="delete"
                           as="button"
                           type="button"
-                          :link="
-                            route('admin.components.destroy', component.id)
-                          "
+                          :link="route('admin.sections.destroy', [component.id,section.id])"
                           >Delete</ButtonLink
                         >
                       </div>
                     </TableData>
                   </TableRow>
                 </Table>
-                <div class="m-2 p-2" v-if="components">
-                  <Pagination :links="components.links" />
+                <div class="m-2 p-2" v-if="sections">
+                  <Pagination :links="sections.links" />
                 </div>
               </div>
             </div>
@@ -104,8 +98,9 @@ import { ref, defineProps, watch } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 
 const props = defineProps({
-  components: Object,
+  component: Object,
   filters: Object,
+  sections: Array,
 });
 
 const search = ref(props.filters.search);
@@ -113,7 +108,7 @@ const perPage = ref(props.filters.perPage);
 
 watch(search, (value) => {
   Inertia.get(
-    "/admin/components",
+    `/admin/components/${component.id}/sections`,
     { search: value, perPage: perPage.value },
     {
       preserveState: true,
@@ -122,9 +117,9 @@ watch(search, (value) => {
   );
 });
 
-function getComponents(value) {
+function getSections(value) {
   Inertia.get(
-    "/admin/components",
+    `/admin/components/${component.id}/sections`,
     { perPage: value, search: search.value },
     {
       preserveState: true,

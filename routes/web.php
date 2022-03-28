@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SerieController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TopicController;
+use App\Http\Controllers\Frontend\ComponentController as FrontendComponentController;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\LessonController as LessonFrontendController;
+use App\Http\Controllers\Frontend\SectionController as FrontendSectionController;
 use App\Http\Controllers\Frontend\TopicController as TopicFrontendController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use Illuminate\Foundation\Application;
@@ -26,6 +28,12 @@ Route::get('/lessons', [LessonFrontendController::class, 'index'])->name('fronte
 Route::get('/courses/{course:slug}/lessons/{lesson:slug}', [LessonFrontendController::class, 'show'])->name('frontend.lessons.show');
 
 
+Route::domain('block.' . env('APP_URL'))->group(function () {
+    Route::get('/components', [FrontendComponentController::class, 'index'])->name('frontend.components.index');
+    Route::get('/components/{component:slug}', [FrontendComponentController::class, 'show'])->name('frontend.components.show');
+    Route::get('/components/{component:slug}/sections/{section:slug}', [FrontendSectionController::class, 'show'])->name('frontend.sections.show');
+});
+
 Route::view('/policy', 'policy')->name('policy');
 Route::view('/terms', 'terms')->name('terms');
 
@@ -39,8 +47,8 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
     Route::resource('/courses/{course}/lessons', LessonController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/components', ComponentController::class);
-    Route::resource('/components/{component:slug}/sections', SectionController::class);
-    Route::resource('/components/{component:slug}/sections/{section:slug}/blocks', BlockController::class);
+    Route::resource('/components/{component}/sections', SectionController::class);
+    Route::resource('/components/{component}/sections/{section}/blocks', BlockController::class);
 });
 
 Route::get('/dashboard', function () {

@@ -1,14 +1,14 @@
 <template>
-  <Head title="Component Edit" />
+  <Head title="Section Create" />
   <AdminLayout>
-    <template #header> Edit Component </template>
+    <template #header> Section Create </template>
     <div class="py-2">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div
           class="bg-white sm:max-w-md overflow-hidden shadow-sm sm:rounded-lg"
         >
           <div class="p-6 border-b border-gray-200">
-            <form @submit.prevent="updateComponent" class="space-y-4">
+            <form @submit.prevent="updateSection" class="space-y-4">
               <div>
                 <Label for="name" value="Name" />
                 <Input
@@ -20,32 +20,13 @@
                   autocomplete="name"
                 />
               </div>
-              <div>
-                <div class="flex justify-center">
-                  <img :src="image" class="w-32 h-32 rounded" />
-                </div>
-                <Label for="poster_path" value="Poster" />
-                <input
-                  type="file"
-                  id="poster_path"
-                  @input="form.poster_path = $event.target.files[0]"
-                />
-                <progress
-                  v-if="form.progress"
-                  :value="form.progress.percentage"
-                  max="100"
-                >
-                  {{ form.progress.percentage }}%
-                </progress>
-              </div>
-
-              <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-end mt-4">
                 <Button
                   class="ml-4"
                   :class="{ 'opacity-25': form.processing }"
                   :disabled="form.processing"
                 >
-                  Update
+                  Update Section
                 </Button>
               </div>
             </form>
@@ -62,23 +43,16 @@ import AdminLayout from "@/Layouts/Admin";
 import Button from "@/Components/Button.vue";
 import Input from "@/Components/Input.vue";
 import Label from "@/Components/Label.vue";
-import { defineProps } from "vue";
-import { Inertia } from "@inertiajs/inertia";
 
 const props = defineProps({
   component: Object,
-  image: String,
+    section: Object
 });
 const form = useForm({
-  name: props.component.name,
-  poster_path: null,
+  name: props.section.name
 });
 
-const updateComponent = () => {
-  Inertia.post(`/admin/components/${props.component.id}`, {
-    _method: "put",
-    name: form.name,
-    poster_path: form.poster_path,
-  });
+const updateSection = () => {
+  form.put(`/admin/components/${props.component?.id}/sections/${props.section.id}`);
 };
 </script>

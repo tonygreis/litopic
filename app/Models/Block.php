@@ -11,7 +11,7 @@ class Block extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $fillable = ['section_id', 'name', 'meta', 'slug', 'poster_path'];
+    protected $fillable = ['section_id', 'name', 'meta', 'slug', 'poster_path', 'html', 'vue', 'react'];
 
     public function getSlugOptions(): SlugOptions
     {

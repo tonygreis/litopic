@@ -93,6 +93,7 @@ class CourseController extends Controller
     public function destroy($id)
     {
         $course = Course::findOrFail($id);
+        Storage::delete('public/' . $course->poster_path);
         $course->delete();
         return Redirect::route('admin.courses.index')->with('flash.banner', 'Course deleted.')->with('flash.bannerStyle', 'danger');
     }

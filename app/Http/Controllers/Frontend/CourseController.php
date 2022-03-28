@@ -15,8 +15,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::query()
-            ->latest()
+        $courses = Course::orderBy('updated_at', 'desc')
             ->withCount('lessons')
             ->paginate(12);
 

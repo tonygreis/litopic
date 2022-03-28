@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Component;
+use App\Models\Section;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+use Inertia\Inertia;
 
 class SectionController extends Controller
 {
@@ -12,9 +16,20 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Component $component)
     {
-        //
+        $perPage = \Illuminate\Support\Facades\Request::input('perPage') ?: 5;
+        return Inertia::render('Admin/Components/Sections/Index', [
+            'component' => $component,
+            'sections' => Section::query()->latest()
+                ->where('component_id', $component->id)
+                ->when(Request::input('search'), function ($query, $search) {
+                    $query->where('name', 'like', "%{$search}%");
+                })
+                ->paginate($perPage)
+                ->withQueryString(),
+            'filters' => Request::only(['search', 'perPage'])
+        ]);
     }
 
     /**
@@ -22,9 +37,11 @@ class SectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Component $component)
     {
-        //
+        return Inertia::render('Admin/Components/Sections/Create', [
+            'component' => $component
+        ]);
     }
 
     /**
@@ -33,21 +50,17 @@ class SectionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Component $component)
     {
-        //
+        Request::validate([
+            'name' => 'required'
+        ]);
+        $component->sections()->create([
+            'name' => Request::input('name')
+        ]);
+        return Redirect::route('admin.sections.index', $component->id)->with('flash.banner', 'Sections Created.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +68,12 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Component $component, Section $section)
     {
-        //
+        return Inertia::render('Admin/Components/Sections/Edit', [
+            'component' => $component,
+            'section' => $section
+        ]);
     }
 
     /**
@@ -67,9 +83,15 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Component $component, Section $section)
     {
-        //
+        Request::validate([
+            'name' => 'required'
+        ]);
+        $section->update([
+            'name' => Request::input('name')
+        ]);
+        return Redirect::route('admin.sections.index', $component->id)->with('flash.banner', 'Sections updated.');
     }
 
     /**
@@ -78,8 +100,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Component $component, Section $section)
     {
-        //
+        $section->delete();
+        return Redirect::route('admin.sections.index', $component->id)->with('flash.banner', 'Sections deleted.');
     }
 }
