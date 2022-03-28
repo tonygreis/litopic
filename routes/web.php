@@ -26,13 +26,10 @@ Route::get('/courses', [CourseController::class, 'index'])->name('frontend.cours
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('frontend.courses.show');
 Route::get('/lessons', [LessonFrontendController::class, 'index'])->name('frontend.lessons.index');
 Route::get('/courses/{course:slug}/lessons/{lesson:slug}', [LessonFrontendController::class, 'show'])->name('frontend.lessons.show');
+Route::get('/components', [FrontendComponentController::class, 'index'])->name('frontend.components.index');
+Route::get('/components/{component:slug}', [FrontendComponentController::class, 'show'])->name('frontend.components.show');
+Route::get('/components/{component:slug}/sections/{section:slug}', [FrontendSectionController::class, 'show'])->name('frontend.sections.show');
 
-
-Route::domain('block.' . env('APP_URL'))->group(function () {
-    Route::get('/components', [FrontendComponentController::class, 'index'])->name('frontend.components.index');
-    Route::get('/components/{component:slug}', [FrontendComponentController::class, 'show'])->name('frontend.components.show');
-    Route::get('/components/{component:slug}/sections/{section:slug}', [FrontendSectionController::class, 'show'])->name('frontend.sections.show');
-});
 
 Route::view('/policy', 'policy')->name('policy');
 Route::view('/terms', 'terms')->name('terms');
