@@ -10,10 +10,12 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-gray-200 overflow-hidden shadow-sm sm:rounded-lg">
           <section class="container mx-auto p-6 font-mono">
-            <div class="w-full flex mb-4 p-2 justify-end">
-              <ButtonLink :link="route('admin.sections.create', component.id)"
-                >Create Section</ButtonLink
-              >
+            <div class="w-full flex mb-4 p-2 justify-between">
+                <ButtonLink :link="route('admin.components.index')"
+                >Go Back</ButtonLink
+                > <ButtonLink :link="route('admin.sections.create', component.id)"
+            >Create Section</ButtonLink
+            >
             </div>
 
             <div
