@@ -6,13 +6,13 @@
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">openMobileMenu</span>
-                    <svg class="h-6 w-6" :class="{ 'block': !openMobileMenu, 'hidden': openMobileMenu}"
+                    <svg class="h-6 w-6" :class="{ 'block': !openMobileMenu, 'hidden': openMobileMenu }"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <svg class="h-6 w-6" :class="{ 'block': openMobileMenu, 'hidden': !openMobileMenu}"
+                    <svg class="h-6 w-6" :class="{ 'block': openMobileMenu, 'hidden': !openMobileMenu }"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -26,24 +26,17 @@
                 </a>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
-                        <x-nav-link :href="route('frontend.topics.index')"
-                            :active="request()->routeIs('frontend.topics.index')">
+                        <x-nav-link :href="route('frontend.topics.index')" :active="request()->routeIs('frontend.topics.index')">
                             Topic
                         </x-nav-link>
-                        <x-nav-link :href="route('frontend.courses.index')"
-                            :active="request()->routeIs('frontend.courses.index')">
+                        <x-nav-link :href="route('frontend.courses.index')" :active="request()->routeIs('frontend.courses.index')">
                             Courses
                         </x-nav-link>
-                        <x-nav-link :href="route('frontend.lessons.index')"
-                            :active="request()->routeIs('frontend.lessons.index')">
+                        <x-nav-link :href="route('frontend.lessons.index')" :active="request()->routeIs('frontend.lessons.index')">
                             Lessons
                         </x-nav-link>
                         <x-nav-link href="https://blog.laraveller.com">
                             Blog
-                        </x-nav-link>
-                        <x-nav-link :href="route('frontend.components.index')"
-                                    :active="request()->routeIs('frontend.components.index')">
-                            Components
                         </x-nav-link>
                     </div>
                 </div>

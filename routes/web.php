@@ -5,13 +5,10 @@ use App\Http\Controllers\Admin\ComponentController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\SectionController;
-use App\Http\Controllers\Admin\SerieController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\TopicController;
-use App\Http\Controllers\Frontend\ComponentController as FrontendComponentController;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\LessonController as LessonFrontendController;
-use App\Http\Controllers\Frontend\SectionController as FrontendSectionController;
 use App\Http\Controllers\Frontend\TopicController as TopicFrontendController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use Illuminate\Foundation\Application;
@@ -26,9 +23,6 @@ Route::get('/courses', [CourseController::class, 'index'])->name('frontend.cours
 Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('frontend.courses.show');
 Route::get('/lessons', [LessonFrontendController::class, 'index'])->name('frontend.lessons.index');
 Route::get('/courses/{course:slug}/lessons/{lesson:slug}', [LessonFrontendController::class, 'show'])->name('frontend.lessons.show');
-Route::get('/components', [FrontendComponentController::class, 'index'])->name('frontend.components.index');
-Route::get('/components/{component:slug}', [FrontendComponentController::class, 'show'])->name('frontend.components.show');
-Route::get('/components/{component:slug}/sections/{section:slug}', [FrontendSectionController::class, 'show'])->name('frontend.sections.show');
 
 
 Route::view('/policy', 'policy')->name('policy');
